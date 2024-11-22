@@ -6,6 +6,9 @@
 1. Install [Visual Studio Code](https://code.visualstudio.com/).
 2. Install [MikTex](https://miktex.org/download). (LaTeX compiler)
 3. Install [Git](https://git-scm.com/downloads/win). (select *64-bit Git for Windows Setup*)
+4. Follow [this manual](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=windows)
+
+Step 4 is somewhat tedious but crucial. This is like auth for git remote repositories. You will use the combination of the your github name and passphrase to push your changes to Github.
 
 # Setup the project
 
