@@ -1,0 +1,37 @@
+{
+    "latex-workshop.latex.recipes": [
+      {
+        "name": "pdflatex",
+        "tools": [
+          "pdflatex"
+        ]
+      }
+    ],
+    "latex-workshop.latex.tools": [
+      {
+        "name": "pdflatex",
+        "command": "pdflatex",
+        "args": [
+          "-synctex=1",
+          "-interaction=nonstopmode",
+          "-output-directory=${workspaceFolder}/oscillations/build",
+          "${workspaceFolder}/oscillations/main.tex"
+        ]
+      }
+    ],
+    "latex-workshop.latex.outDir": "${workspaceFolder}/oscillations/build",
+    "latex-workshop.latex.autoBuild.run": "never",
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.latex.clean.fileTypes": [
+      "*.aux",
+      "*.log",
+      "*.out",
+      "*.toc",
+      "*.synctex.gz"
+    ],
+    "latex-workshop.latex.clean.subfolder.enabled": true,
+    "files.exclude": {
+      "**${workspaceFolder}/oscillations/build/**": true
+    }
+  }
+  

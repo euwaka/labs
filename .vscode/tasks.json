@@ -1,0 +1,57 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Sub Build Oscillations",
+        "type": "shell",
+        "command": "pdflatex",
+        "args": [
+          "-output-directory=${workspaceFolder}/oscillations/build",
+          "${workspaceFolder}/oscillations/main.tex"
+        ],
+        "group": {
+          "kind": "none",
+          "isDefault": false
+        },
+        "problemMatcher": [],
+        "detail": "Compile LaTeX document for oscillations"
+      },
+      {
+        "label": "Create build folder",
+        "type": "shell",
+        "command": "mkdir",
+        "args": [
+          "-p",
+          "oscillations/build/"
+        ],
+        "group": {
+          "kind": "none",
+          "isDefault": false
+        },
+        "detail": "Create build folders for pdflatex to work"
+      },
+      {
+        "label": "Clean-up",
+        "type": "shell",
+        "command": "rm",
+        "args": [
+          "-rf",
+          "${workspaceFolder}/oscillations/build/"
+        ],
+        "group": {
+          "kind": "none",
+          "isDefault": false
+        },
+        "detail": "Remove build files"
+      },
+      {
+        "label": "Build Oscillations",
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "dependsOn": ["Create build folder", "Sub Build Oscillations"]
+      }
+    ]
+  }
+  
