@@ -33,10 +33,10 @@
       {
         "label": "Clean-up",
         "type": "shell",
-        "command": "rm",
+        "command": "rmdir",
         "args": [
-          "-rf",
-          "${workspaceFolder}/oscillations/build/"
+          "/s",
+          "${workspaceFolder}\\oscillations\\build"
         ],
         "group": {
           "kind": "none",
