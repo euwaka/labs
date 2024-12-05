@@ -1,17 +1,22 @@
 \textbf{Question 1.} \\
-Question: Briefly state the first question here.
+Determine how the value of the damping factor $\gamma$ affects the shape of the resonance curve. What happens if $\gamma$ increases/decreases?
 
-\textbf{Answer:} Provide a concise answer to the first question. Include any relevant calculations or explanations if necessary. For example:
-\[
-F = m \cdot a
-\]
+\textbf{Answer:} A change in $\gamma$ will cause a change in amplitude and a shift in resonance frequency. When $\gamma$ increases the amplitude will decrease, because the amplitude is inversely proportional to $\gamma$. The peak will be shifted to the left, since an increase in $\gamma$ causes a decrease in $\omega_{\text{res}}$, as seen in Eq. 2. A decrease in $\gamma$ will have an inverse effect, the amplitude will increase and the peak will shift to the right.
 
 \vspace{1em}
 
 \textbf{Question 2.} \\
-Question: Briefly state the second question here.
+Expression (5) reveals that the resonance frequency is in general not equal to the natural frequency of the system $\omega$. Express ωres in terms of the damping factor $\gamma$ and $\omega$. In which case is the equality $\omega_{\text{res}} = \omega$ exact?
 
-\textbf{Answer:} Provide a concise answer to the second question. Include diagrams or references if needed. For example:
+\textbf{Answer:} The amplitude is given by the following equation:
+\begin{equation}
+        A = \frac{\frac{F_d}{m}}{\sqrt{(\omega^2 - \omega_d^2)^2 + (2\gamma\omega_d)^2}}
+\end{equation}
+The resonance frequency occurs when the amplitude A is maximized, this occurs when the denominator in is minimized. For this we take the derivative of the denominator with respect to ωd and set it to zero. The resonance frequency was determined to be: 
+\begin{equation}
+        \omega_{\text{res}} = \sqrt{\omega^2 - 2\gamma^2}
+\end{equation}
+From this follows that $\omega_{\text{res}} = \omega$ when $\gamma = 0$, this occurs when no damping is taking place.
 
 \vspace{1em}
 
