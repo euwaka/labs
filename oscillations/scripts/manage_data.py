@@ -37,7 +37,14 @@ for M in range(1, 3):
 damping = pd.read_csv("oscillations/data/damping.csv", delimiter=";")
 damping.columns = ["time", "angle1", "angle2"]
 damping.to_csv("oscillations/data/damping.csv", sep=";", decimal=".", float_format="%.2f", index=False)
-    
+
+driven = pd.read_csv("oscillations/data/driven_force_data.csv", delimiter=";")
+for col in driven.columns:
+    if "time" in col and not col == "1time1":
+        driven.pop(col)
+
+driven.to_csv("oscillations/data/driven_force_data.csv", float_format="%.2f", index=False, sep=";", decimal=".")
+        
 # damping1 = pd.read_csv("oscillations/data/damping1.csv", delimiter=";")
 # damping2 = pd.read_csv("oscillations/data/damping2.csv", delimiter=";")
 
