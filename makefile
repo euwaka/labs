@@ -2,6 +2,9 @@ LATEX=pdflatex
 
 all: oscillations/build/oscillations.pdf
 
+data:
+	python3 oscillations/scripts/main.py
+
 script:
 	python3 oscillations/scripts/prep_exercise_Q3.py
 
