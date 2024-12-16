@@ -1,1 +1,24 @@
-Our results and graphs.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{oscillations/images/resonance}
+  \caption{Amplitude and phase difference of the oscillations plotted against driving frequency.}
+  \label{fig:resonance}
+\end{figure}
+
+The graph of the amplitude and phase difference of the oscillations against driving frequencies with best-fit curves and correspoding uncertanties are depicted in Fig.\ref{fig:resonance}. Tabular data with respective errors are depicted in Table \ref{tab:data}.
+
+Resonance frequency from the amplitude-frequency graph is estimated to be $\omega_{amplitude} = 4.35 \pm 0.09 (rad/s)$. Resonance frequency from the phase-frequency graph is estimated to be $\omega_{phase} = 4.46 \pm 0.02 (rad/s)$. Combined resonance frequency is
+
+\begin{equation*}
+\omega_{r} = \frac{\omega_{amplitude} + \omega_{phase}}{2} \pm \sqrt{\sigma(\omega_{amplitude}) + \sigma(\omega_{phase})} = 4.41 \pm 0.09 (rad/s)
+\end{equation*}
+
+Damping factor is again evaluated from Eq.~\ref{eq:freq_deps}.
+
+\begin{equation*}
+        \gamma = \sqrt{ \frac{\omega^2 - \omega_{res}^2}{2} } = \sqrt{ \frac{4.79^2 - 4.41^2}{2} } = 1.32 \pm 0.8 (rad/s)
+\end{equation*}       
+
+This damping factor matches the damping factor previously calculated in a different way.
+
+Error analysis for the resonance frequencies and the damping factor is located in Appendix \ref{appendix:errors}.

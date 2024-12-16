@@ -1,0 +1,57 @@
+\subsection{ Resonance Frequency from the Amplitude Graph } \label{appendix:errors:res_ampl}
+
+In this case, resonance frequency was estimated by finding the peak value of the best-fit curve $A(x, a, b, c) = \frac{a}{\sqrt{(b-x^2)^2 + cx^2}}$. This is done by setting $\frac{\partial A}{\partial x} = 0$. Therefore,
+
+\begin{equation*}
+  \frac{\partial}{\partial x} A(x, a, b, c) = \frac{ax(2b-c-2x^2)}{( b^2 + x^2 (-2b + c + x^2) )^{3/2}} = 0 \Rightarrow x = \sqrt{b - c/2}
+\end{equation*}
+
+Values for $a$, $b$, and $c$ were obtained using standard statistical optimization techniques that also yielded the covarience matrix for $a$, $b$, and $c$. The values of interest are:
+\begin{equation*}
+  a = 8.40, b = 19.02, c = 0.10, \sigma_b = 0.18, \sigma_c = 0.02
+\end{equation*}
+
+Therefore, $x = \omega_{amplitude} = \sqrt{19.02 - 0.10 /2} \approx 4.35 (rad/s)$. Error is propagated using:
+\begin{equation*}
+  \frac{\sigma_{x}}{x} = \sqrt{ \left( \frac{\partial x}{\partial b} \sigma_b \right)^2 + \left( \frac{\partial x}{\partial c} \sigma_c \right)^2} = \sqrt{ \left( \frac{1}{2\sqrt{b - c/2}} \sigma_b \right)^2 + \left( \frac{1}{-4\sqrt{b-c/2}} \sigma_c \right)^2} 
+\end{equation*}
+
+Plugging the values in, error in the resonance frequency can be computed to be $\sigma_{x} = 0.09 (rad/s)$.
+
+Therefore, $\omega_{amplitude} = 4.41 \pm 0.09 (rad/s)$.
+
+\subsection{ Resonance Frequency from the Phase Graph } \label{appendix:errors:res_phase}
+
+In this case, resonance frequency was estimated by finding the point of discontinuity of the best-fit curve $\phi(x, a, b) = \arctan \frac{ax}{b - x^2}$. For this function, the point of discontinuity coincides with the peak value, so the same statistical optimization techniques were utilized as in section \ref{appendix:errors:res_ampl}. The values and errors of the parameters are:
+\begin{equation*}
+  a=0.48, b = 19.93, \sigma_b = 0.18
+\end{equation*}
+
+Resonance frequency is located where $\phi = \pi/2$, thus in the peak-discontinuity point. This equality holds if $b-x^2=0$. Therefore, $x = \sqrt{b} > 0, x = 4.46 (rad/s)$. The error is computed as follows:
+
+\begin{equation*}
+  \frac{\sigma_x}{x} = \frac{\partial x}{\partial b} \sigma_b \Rightarrow \sigma_x = \frac{\sigma_b}{2\sqrt{b}} = 0.02
+\end{equation*}
+
+Therefore, $\omega_{phase} = 4.46 \pm 0.02 (rad/s)$.
+
+\subsection{Damping Factor in terms of Resonance Frequency}
+
+The relation between the damping factor $\gamma$ and natural frequency $\omega$ and the resonance frequency $\omega_{res}$ is
+\begin{equation*}
+  \gamma = \sqrt{\frac{\omega^2 - \omega_{res}^2}{2}} = 1.32 (rad/s)
+\end{equation*}
+
+The error is
+\begin{equation*}
+  \left( \frac{\sigma_\gamma}{\gamma} \right)^2 = \left( \frac{\partial \gamma}{\partial \omega} \sigma_\omega \right)^2 + \left( \frac{\partial \gamma}{\partial \omega_{res}} \sigma_{\omega_{res}} \right)^2 = \frac{\omega^2 \sigma_{\omega}}{2(\omega^2 - \omega_{res}^2)} + \frac{\omega_{res}^2\sigma_{\omega_{res}}}{2(\omega^2 - \omega_{res}^2)}
+\end{equation*}
+
+\begin{equation*}
+  \sigma_\gamma = \gamma \sqrt{\frac{\omega^2 \sigma_{\omega}}{2(\omega^2 - \omega_{res}^2)} + \frac{\omega_{res}^2\sigma_{\omega_{res}}}{2(\omega^2 - \omega_{res}^2)}} = \gamma \sqrt{\frac{\omega^2 \sigma_\omega + \omega_{res}^2 \sigma_{\omega_{res}}}{2(\omega^2 - \omega_{res}^2)}} = 1.32 \sqrt{ \frac{4.78^2 \times 0.02 + 4.41^2 \times 0.09}{2(4.78^2 - 4.41^2)} } = 0.8
+\end{equation*}
+
+Therefore,
+\begin{equation*}
+  \gamma = 1.32 \pm 0.8 (rad/s) 
+\end{equation*}

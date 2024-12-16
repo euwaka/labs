@@ -1,2 +1,11 @@
+In a closed damped driven oscillatory system, three forces are acting on a point mass: restoring force ($F_{restoring} = -kx$), damping force ($F_{damping} = -b\dot{x}$), and driving force ($F_{driving} = F_0 \cos(\omega_d t)$). By the Second Newton's law, resulting motion is modelled by:
+\begin{equation*}
+    m\ddot{x} + b\dot{x} + kx = F_0 \cos(\omega_d t)
+\end{equation*}
 
-This is \textbf{brief statement of experimental goal and only give the formulae relevant for analysis (do not give long theoretical introductions: for these reports it is allowed and encouraged to refer to the manual.}
+More commonly, this differential equation is written as
+\begin{equation} \label{eq:full_motion}
+    \ddot{x} + 2\gamma \dot{x} + \omega^2 x = \frac{F_0}{m} \cos(\omega_d t)
+\end{equation} where $\gamma = \frac{b}{2m}$ is the damping factor, $\omega = \sqrt{\frac{k}{m}}$ is natural angular frequency of the oscillations.
+
+Eq.~\eqref{eq:full_motion} can be solved for $x(t)$ 

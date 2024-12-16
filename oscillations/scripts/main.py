@@ -2,10 +2,12 @@ import pandas as pd
 import seaborn as sb
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib.ticker import FormatStrFormatter
 from scipy.signal import find_peaks, correlate
 from sklearn.preprocessing import StandardScaler
 from scipy.optimize import curve_fit
 
+N = 500
 MEASUREMENTS = 2
 SAMPLES = 17
 
@@ -135,22 +137,51 @@ driven_freqs = np.array(driven_freqs)
 phases = np.array(phases)
 
 # Plot
-plt.figure(figsize=(10, 6))
-plt.errorbar(driven_freqs[:, 1], ampls[:, 1], xerr=driven_freqs[:, 2], yerr=ampls[:, 2], fmt="o", label="Amplitude v/s Driven Frequency")
+fig, axes = plt.subplots(1, 2)
+ax1, ax2 = axes
+
+ax1.scatter(driven_freqs[:, 1], ampls[:, 1], color="black")
+ax1.errorbar(driven_freqs[:, 1], ampls[:, 1], xerr=driven_freqs[:, 2], yerr=ampls[:, 2], fmt="o", label="Data", alpha = 0.4, color="black")
 
 def ampl_model(x, a, b, c):
      return a / np.sqrt( (b - x * x) * (b - x * x) + c * x * x )
 
-(a, b, c), _ = curve_fit(ampl_model, driven_freqs[:, 1], ampls[:, 1], sigma=ampls[:, 2])
+popt, pcov = curve_fit(ampl_model, driven_freqs[:, 1], ampls[:, 1], sigma=ampls[:, 2])
+a, b, c = popt
+b_err = np.sqrt(pcov[1, 1])
+c_err = np.sqrt(pcov[2, 2])
+
+print(f"a = {a:.2f}\tb = {b:.2f}\tc = {c:.2f}\nerr_b = {b_err:.2f}\t err_c = {c_err:.2f}")
+
 t = np.linspace(1, 5.5, 500)
-plt.plot(t, ampl_model(t, a, b, c), color="green", linestyle="--", label="Best-fit")
-plt.title("Amplitude v/s Driving Frequency")
-plt.xticks(np.arange(1, 5.6, 0.5))
-plt.xlabel("Driving Frequency (rad/s)")
-plt.ylabel("Amplitude (rad)")
-plt.legend()
-plt.grid(True)
-plt.show()
+samples = np.random.multivariate_normal(popt, pcov, N)
+sampled_curves = np.array([ampl_model(t, *sample) for sample in samples])
+
+# Calculate mean and standard deviation for the sampled curves
+mean_curve = np.mean(sampled_curves, axis=0)
+std_curve = np.std(sampled_curves, axis=0)
+
+# Plot the confidence interval (mean ± 1σ)
+ax1.fill_between(t, mean_curve - std_curve, mean_curve + std_curve, color="green", alpha=0.3, label=r"$1\sigma$ best-fit confidence")
+
+# Find the resonance frequency from amplitude-frequency graph
+resonance_ampl = t[find_peaks(ampl_model(t, a, b, c))[0]][0]
+temp = np.sqrt( b - c / 2 )
+resonance_ampl_err = resonance_ampl * np.sqrt( np.power( b_err / 2 / temp, 2 ) + np.power( c_err / 4 / temp, 2 ))
+print(f"Resonance Frequency from Amplitude/Frequency = {resonance_ampl:.2f} ± {resonance_ampl_err:.1g}")
+
+ax1.axvline(resonance_ampl, color="red", linestyle="--", label="Resonance Frequency Line")
+
+plt.rcParams['text.usetex'] = True
+ax1.plot(t, ampl_model(t, a, b, c), color="green", linestyle="--", label=r"Best-fit $A(x, a, b, c) = \frac{a}{\sqrt{ (b-x^2)^2 + cx^2 }}$")
+ax1.xaxis.set_major_formatter(FormatStrFormatter("%.2f"))
+ax1.yaxis.set_major_formatter(FormatStrFormatter("%.2f"))
+ax1.set_xticks(list(np.arange(1, 5.6, 0.5)) + [resonance_ampl])
+ax1.set_xlabel("Driving Frequency (rad/s)")
+ax1.set_ylabel("Amplitude (rad)")
+ax1.tick_params(axis="x", rotation=45)
+ax1.legend(fontsize=18)
+ax1.grid(True)
 
 def phase_model(x, a, b):
      return np.arctan(a * x / ( b - x * x )) 
@@ -158,21 +189,42 @@ def phase_model(x, a, b):
 initial_guess = [4, 19]
 
 t = np.linspace(2, 6, 2000)
-(a, b), _ = curve_fit( phase_model, driven_freqs[:, 1], phases[:, 1], p0=initial_guess)
-plt.figure(figsize=(10, 6))
-plt.plot(t, phase_model(t, a, b), color="green", linestyle="--", label="Best-fit")
-plt.errorbar(driven_freqs[:, 1], phases[:, 1], xerr=driven_freqs[:, 2], yerr=phases[:, 2], fmt="o", label="Phase v/s Driven Frequency")
-plt.title("Phase v/s Driving Frequency")
-plt.xticks(np.arange(1, 5.6, 0.5))
-plt.xlabel("Driving Frequency (rad/s)")
-plt.ylabel("Phase (rad)")
-plt.legend()
-plt.grid(True)
-plt.show()
+popt, pcov = curve_fit( phase_model, driven_freqs[:, 1], phases[:, 1], p0=initial_guess)
+a, b = popt
+err_b = np.sqrt( pcov[1, 1] )
+
+print(f"a = {a:.2f}\tb = {b:.2f}\nerr_b = {b_err:.2f}")
+
+samples = np.random.multivariate_normal(popt, pcov, N)
+sampled_curves = [phase_model( t, *sample ) for sample in samples]
+mean_curve = np.mean(sampled_curves, axis=0)
+std_curve = np.std(sampled_curves, axis=0)
+
+# Plot the confidence interval (mean ± 1σ)
+ax2.fill_between(t, mean_curve - std_curve, mean_curve + std_curve, color="green", alpha=0.3, label="$1\sigma$ best-fit confidence")
+ax2.plot(t, phase_model(t, a, b), color="green", linestyle="--", label=r"Best-fit $\phi(x, a, b) = \arctan \frac{ax}{b - x^2}$")
+
+# find the resonance frequency from the phase-frequency graph
+resonance_phase = t[find_peaks(phase_model(t, a, b))[0]][0]
+resonance_phase_err = err_b / 2 / np.sqrt(b)
+
+print(f"Resonance Frequency from Phase/Frequency = {resonance_phase:.2f} ± {resonance_phase_err:.1g}")
+ax2.axvline(resonance_phase, color="red", linestyle="--", label="Resonance Frequency Line")
+
+ax2.scatter(driven_freqs[:, 1], phases[:, 1], color="black")
+ax2.errorbar(driven_freqs[:, 1], phases[:, 1], xerr=driven_freqs[:, 2], yerr=phases[:, 2], fmt="o", alpha=0.4, color="black", label="Data")
+ax2.xaxis.set_major_formatter(FormatStrFormatter("%.2f"))
+ax2.yaxis.set_major_formatter(FormatStrFormatter("%.2f"))
+ax2.set_xticks(list(np.arange(2, 5.6, 0.55)) + [resonance_phase])
+ax2.tick_params(axis="x", rotation=45)
+ax2.set_xlabel("Driving Frequency (rad/s)")
+ax2.set_ylabel("Phase (rad)")
+ax2.legend(fontsize=16)
+ax2.grid(True)
 
 # Output
 natural_freq, natural_freq_err = EvalNaturalFrequency(simple_harmonics_d)
-print(f"Natural Frequency is {natural_freq:.2g} +- {natural_freq_err:.2g} (rad/s)")
+print(f"Natural Frequency is {natural_freq:.2g} ± {natural_freq_err:.1g} (rad/s)")
 
 print("V\tAmplitude\tDriving Freq\tPhase")
 for i in range(len(ampls)):
@@ -192,3 +244,4 @@ for i in range(len(ampls)):
 
      print(f"{voltage:.2f}\t{A:.2f} ± {dA:.1g}\t{F:.2f} ± {dF:.1g}\t{P:.2f} ± {dP:.1g}")
 
+plt.show()
