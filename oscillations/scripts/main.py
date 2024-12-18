@@ -21,6 +21,14 @@ dt = 0.050 # from CapStone
 
 
 # Utils
+def FormatWithError(val, err):
+     precision = -int(f"{err:.1e}".split("e")[-1])
+
+     val = round(val, precision)
+     err = round(err, precision)
+
+     return f"{val:.{precision}f} ± {err:.{precision}f}"
+
 def GetData(filepath) -> pd.DataFrame:
      data = pd.read_csv(filepath, delimiter=";")
      data = data.dropna()
@@ -242,6 +250,6 @@ for i in range(len(ampls)):
      P = phases[i][1]
      dP = phases[i][2]
 
-     print(f"{voltage:.2f}\t{A:.2f} ± {dA:.1g}\t{F:.2f} ± {dF:.1g}\t{P:.2f} ± {dP:.1g}")
+     print(f"{voltage:.2f}\t{FormatWithError(A, dA)}\t{FormatWithError(F, dF)}\t{FormatWithError(P, dP)}")
 
 plt.show()

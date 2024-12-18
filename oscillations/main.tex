@@ -1,5 +1,6 @@
 \documentclass[a4paper,12pt]{article}
 
+\usepackage{titling}
 \usepackage{float}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -15,11 +16,15 @@
 
 \begin{document}
 
-\maketitle
-
-\begin{abstract}
-\textit{This experiment aswers the question: What is the relation between the damping factor and the resonance frequency in a damped driven oscillator system? The natural frequency of an undamped oscillator is measured, damping is introduced by a magnet and a driving force is applied. The amplitude and phase are recorded at different driving frequencies and used to construct amplitude-frequency and phase-frequency graphs. The relation that we found between the damping factor and resonance frequency was that by an increase in the damping factor lead to the maximum amplitude being reduced and the resonance frequency to shift slightly below the natural frequency.}
+\begin{titlingpage}
+  \centering
+  \maketitle
+  \vspace{2cm}
+  \begin{abstract}
+  \textit{This experiment answers the question: What is the relation between the damping factor and the resonance frequency in a damped driven oscillator system? The natural frequency of an undamped oscillator is measured, damping is introduced by a magnet and a driving force is supplied by a rotary motor. The amplitude and phase are recorded at different driving frequencies and used to construct amplitude-frequency and phase-frequency graphs. The hypothesis that is tested is the relation between the damping factor and resonance frequency $\omega_{res} = \sqrt{\omega^2 - 2\gamma^2}$.}
 \end{abstract}
+
+\end{titlingpage}
 
 \break
 \tableofcontents
@@ -30,7 +35,7 @@
 \section{Theory} \label{sec:theory}
 \input{oscillations/sections/theory}
 
-\section{Experimental setup}
+\section{Methods}
 \input{oscillations/sections/setup}
 
 \section{Results}
