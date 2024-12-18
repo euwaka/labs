@@ -1,18 +1,41 @@
 \subsection{Direct Calculation of Damping} \label{sec:direct_damping}
 
-The oscillations produced without an added damping factor, i.e. the magnet are displayed in Figure 2. The assumption was made that the string to which the springs were attached did not slip from the pulley. Figure 2 shows underdamped oscillations, which can be seen by a decrease in amplitudes.
+The oscillations produced without an added damping factor, i.e. the magnet are displayed in Figure 2. The assumption was made that the string to which the springs were attached did not slip from the pulley. Figure 2 shows underdamped oscillations, which can be seen by a decrease in amplitudes. The oscillations produced without an added damping factor, i.e. the magnet are displayed in \ref{fig:undamped_oscillations}. The assumption was made that the string to which the springs were attached did not slip from the pulley.
 
-% oscillations image
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=1\textwidth]{oscillations/images/Undamped_Oscillations}
+  \caption{Oscillations without damping}
+  \label{fig:undamped_oscillations}
+\end{figure}
 
 From the measurements the coordinates of the maxima were determined and from this the natural frequency was determined to be $\omega = 4.8 \pm 0.1 (rad/s)$, which was constant throughout the measurements.
 
-A damping term was added by placing the magnet back in its original position, the oscillations are displayed in Figure 3. The coordinates of nine of the maxima were determined and were plotted in Figure 4. 
+A damping term was added by placing the magnet back in its original position, the oscillations are displayed in \ref{fig:underdamped}. The coordinates of nine of the maxima were determined and were plotted in \ref{fig:log of damping factor}. 
 
-% Damping factor image
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=1\textwidth]{oscillations/images/underdamped}
+  \caption{Decrease in amplitude by an added damping term}
+  \label{fig:underdamped}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=1\textwidth]{oscillations/images/log}
+  \caption{Semi-logaritmic plot of the amplitude over time}
+  \label{fig:log of damping factor}
+\end{figure}
 
 The displacement amplitude $x(t)$ decreases with:
-% equation
-The slope of the line of best fit $l$ is equal to the $-\gamma$ term in Equation 1.
+\begin{equation}
+  x(t) = e^{-\gamma t} \cos(\omega t + \phi) 
+  \label{eq:displacement amplitude}
+\end{equation}
+The slope of the line of best fit $l$ is equal to the $-\gamma$ term in Equation .
+\begin{equation}
+  |l| = \gamma 
+\end{equation}
 
 By this a damping factor of $\gamma_{direct} = 1.3 \pm 0.2 (rad/s)$ was determined.
 

@@ -1,3 +1,38 @@
+\subsection{Natural Frequency from the Amplitudes} \label{appendix:errors:fn_amplitude}
+
+The uncertanty in $T_i$ is given by:
+\begin{equation}
+  \Delta T = (\frac{timing uncertainty\sqrt(N )})
+\end{equation}
+
+The error in the natural frequency gets propagated as:
+
+\begin{equation}
+  \Delta f_n = f_n^2\Delta T 
+\end{equation}
+
+\subsection{The damping factor from an underdamped oscillator}
+In this case, $\Delta \gamma \propto \Delta t_i +\Delta m + \Delta A_i$. Here $\Delta t_i$ is the assigned error of $0.05$s, this being the measurement interfalls. The line of best fit is in the form $y=mx+c$, the uncertainty in the slope is given by:
+
+\begin{equation}
+  \Delta m = \sqrt{\frac{\sigma_y^2}{\sum (t_i - \bar{t_i})^2}}
+\end{equation}
+Where $\sigma_y^2$ denotes the variance in $A_i$, with $\sigma_y^2$ being equal to:
+
+\begin{equation}
+\sigma = \sqrt{\sum_{i=1}^{N} {(t_i - \bar{t_i})^2}{f(t_i)}}
+\end{equation}
+
+The uncertainty in $A_i$ is calculated by:
+\begin{equation}
+  s = \sqrt{\frac{1}{N-1}\sum_{i = 1}^{N}(t_i - \bar{t_i})^2}
+\end{equation}
+
+Combing the previous stated uncertanties lead to a value of $\Delta \gamma$ that is determined by:
+\begin{equation}
+  \Delta \gamma = \sqrt{(\Delta m)^2 + \sum_{i=1}^{N} \left[ \left( \frac{\Delta A_i}{t_i} \right)^2 + \left( \gamma \cdot \frac{\Delta t_i}{t_i} \right)^2 \right]}
+\end{equation}
+
 \subsection{ Resonance Frequency from the Amplitude Graph } \label{appendix:errors:res_ampl}
 
 In this case, resonance frequency was estimated by finding the peak value of the best-fit curve $A(x, a, b, c) = \frac{a}{\sqrt{(b-x^2)^2 + cx^2}}$. This is done by setting $\frac{\partial A}{\partial x} = 0$. Therefore,
