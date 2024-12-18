@@ -1,20 +1,22 @@
+\subsection{Direct Calculation of Damping} \label{sec:direct_damping}
+
 The oscillations produced without an added damping factor, i.e. the magnet are displayed in Figure 2. The assumption was made that the string to which the springs were attached did not slip from the pulley. Figure 2 shows underdamped oscillations, which can be seen by a decrease in amplitudes.
 
-#oscillations image
+% oscillations image
 
-From the measurements the coordinates of the maxima were determined and from this the natural frequency was determined to be 4.8 +- 0.1 rad/s, which was constant throughout the measurements.
+From the measurements the coordinates of the maxima were determined and from this the natural frequency was determined to be $\omega = 4.8 \pm 0.1 (rad/s)$, which was constant throughout the measurements.
 
 A damping term was added by placing the magnet back in its original position, the oscillations are displayed in Figure 3. The coordinates of nine of the maxima were determined and were plotted in Figure 4. 
 
-#Damping factor image
+% Damping factor image
 
-The displacement amplitude x(t) decreases with:
-#equation
-The slope of the line of best fit l is equal to the -\gamma term in Equation 1.
+The displacement amplitude $x(t)$ decreases with:
+% equation
+The slope of the line of best fit $l$ is equal to the $-\gamma$ term in Equation 1.
 
-By this a damping factor of 1.3 ± 0.2 rad/s was determined.
+By this a damping factor of $\gamma_{direct} = 1.3 \pm 0.2 (rad/s)$ was determined.
 
-
+\subsection{Indirect Calculation of Damping} \label{sec:indirect_damping}
 
 \begin{figure}[H]
   \centering
@@ -23,7 +25,7 @@ By this a damping factor of 1.3 ± 0.2 rad/s was determined.
   \label{fig:resonance}
 \end{figure}
 
-The graph of the amplitude and phase difference of the oscillations against driving frequencies with best-fit curves and correspoding uncertanties are depicted in Fig.\ref{fig:resonance}. Tabular data with respective errors are depicted in Table \ref{tab:data}.
+Oscillations of the damped driven system were recorded for different values of the driven force\footnote{There is a linear relation between the driving force and the input voltage.}. The graph of the amplitude and phase difference of the oscillations against driving frequencies with best-fit curves and correspoding uncertanties are depicted in Fig.\ref{fig:resonance}. Tabular data with respective errors are depicted in Table \ref{tab:data}.
 
 Resonance frequency from the amplitude-frequency graph is estimated to be $\omega_{amplitude} = 4.35 \pm 0.09 (rad/s)$. Resonance frequency from the phase-frequency graph is estimated to be $\omega_{phase} = 4.46 \pm 0.02 (rad/s)$. Combined resonance frequency is
 
@@ -34,9 +36,9 @@ Resonance frequency from the amplitude-frequency graph is estimated to be $\omeg
 Damping factor is again evaluated from Eq.~\ref{eq:freq_deps}.
 
 \begin{equation*}
-        \gamma = \sqrt{ \frac{\omega^2 - \omega_{res}^2}{2} } = \sqrt{ \frac{4.79^2 - 4.41^2}{2} } = 1.32 \pm 0.8 (rad/s)
+        \gamma_{indirect} = \sqrt{ \frac{\omega^2 - \omega_{res}^2}{2} } = \sqrt{ \frac{4.79^2 - 4.41^2}{2} } = 1.32 \pm 0.8 (rad/s)
 \end{equation*}       
 
-This damping factor matches the damping factor previously calculated in a different way.
+This damping factor matches the damping factor previously calculated ($\gamma_{direct}$).
 
-Error analysis for the resonance frequencies and the damping factor is located in Appendix \ref{appendix:errors}.
+Error analysis for the resonance frequencies and the (indirect) damping factor is located in Appendix \ref{appendix:errors}.
