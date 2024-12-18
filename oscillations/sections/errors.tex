@@ -43,15 +43,15 @@ In this case, resonance frequency was estimated by finding the peak value of the
 
 Values for $a$, $b$, and $c$ were obtained using standard statistical optimization techniques that also yielded the covarience matrix for $a$, $b$, and $c$. The values of interest are:
 \begin{equation*}
-  a = 8.40, b = 19.02, c = 0.10, \sigma_b = 0.18, \sigma_c = 0.02
+  a = 8.40, b = 19.02, c = 0.10, \Delta b = 0.18, \Delta c = 0.02
 \end{equation*}
 
 Therefore, $x = \omega_{amplitude} = \sqrt{19.02 - 0.10 /2} \approx 4.35 (rad/s)$. Error is propagated using:
 \begin{equation*}
-  \frac{\sigma_{x}}{x} = \sqrt{ \left( \frac{\partial x}{\partial b} \sigma_b \right)^2 + \left( \frac{\partial x}{\partial c} \sigma_c \right)^2} = \sqrt{ \left( \frac{1}{2\sqrt{b - c/2}} \sigma_b \right)^2 + \left( \frac{1}{-4\sqrt{b-c/2}} \sigma_c \right)^2} 
+  \frac{\Delta x}{x} = \sqrt{ \left( \frac{\partial x}{\partial b} \Delta b \right)^2 + \left( \frac{\partial x}{\partial c} \Delta c \right)^2} = \sqrt{ \left( \frac{1}{2\sqrt{b - c/2}} \Delta b \right)^2 + \left( \frac{1}{-4\sqrt{b-c/2}} \Delta c \right)^2} 
 \end{equation*}
 
-Plugging the values in, error in the resonance frequency can be computed to be $\sigma_{x} = 0.09 (rad/s)$.
+Plugging the values in, error in the resonance frequency can be computed to be $\Delta x = 0.09 (rad/s)$.
 
 Therefore, $\omega_{amplitude} = 4.41 \pm 0.09 (rad/s)$.
 
@@ -59,13 +59,13 @@ Therefore, $\omega_{amplitude} = 4.41 \pm 0.09 (rad/s)$.
 
 In this case, resonance frequency was estimated by finding the point of discontinuity of the best-fit curve $\phi(x, a, b) = \arctan \frac{ax}{b - x^2}$. For this function, the point of discontinuity coincides with the peak value, so the same statistical optimization techniques were utilized as in section \ref{appendix:errors:res_ampl}. The values and errors of the parameters are:
 \begin{equation*}
-  a=0.48, b = 19.93, \sigma_b = 0.18
+  a=0.48, b = 19.93, \Delta b = 0.18
 \end{equation*}
 
 Resonance frequency is located where $\phi = \pi/2$, thus in the peak-discontinuity point. This equality holds if $b-x^2=0$. Therefore, $x = \sqrt{b} > 0, x = 4.46 (rad/s)$. The error is computed as follows:
 
 \begin{equation*}
-  \frac{\sigma_x}{x} = \frac{\partial x}{\partial b} \sigma_b \Rightarrow \sigma_x = \frac{\sigma_b}{2\sqrt{b}} = 0.02
+  \frac{\Delta x}{x} = \frac{\partial x}{\partial b} \Delta b \Rightarrow \Delta x = \frac{\Delta b}{2\sqrt{b}} = 0.02
 \end{equation*}
 
 Therefore, $\omega_{phase} = 4.46 \pm 0.02 (rad/s)$.
@@ -79,11 +79,14 @@ The relation between the damping factor $\gamma$ and natural frequency $\omega$ 
 
 The error is
 \begin{equation*}
-  \left( \frac{\sigma_\gamma}{\gamma} \right)^2 = \left( \frac{\partial \gamma}{\partial \omega} \sigma_\omega \right)^2 + \left( \frac{\partial \gamma}{\partial \omega_{res}} \sigma_{\omega_{res}} \right)^2 = \frac{\omega^2 \sigma_{\omega}}{2(\omega^2 - \omega_{res}^2)} + \frac{\omega_{res}^2\sigma_{\omega_{res}}}{2(\omega^2 - \omega_{res}^2)}
+  \left( \frac{\Delta \gamma}{\gamma} \right)^2 = \left( \frac{\partial \gamma}{\partial \omega} \Delta \omega \right)^2 + \left( \frac{\partial \gamma}{\partial \omega_{res}} \Delta \omega_{res} \right)^2 = \frac{\omega^2 \Delta \omega}{2(\omega^2 - \omega_{res}^2)} + \frac{\omega_{res}^2\Delta \omega_{res}}{2(\omega^2 - \omega_{res}^2)}
 \end{equation*}
 
 \begin{equation*}
-  \sigma_\gamma = \gamma \sqrt{\frac{\omega^2 \sigma_{\omega}}{2(\omega^2 - \omega_{res}^2)} + \frac{\omega_{res}^2\sigma_{\omega_{res}}}{2(\omega^2 - \omega_{res}^2)}} = \gamma \sqrt{\frac{\omega^2 \sigma_\omega + \omega_{res}^2 \sigma_{\omega_{res}}}{2(\omega^2 - \omega_{res}^2)}} = 1.32 \sqrt{ \frac{4.78^2 \times 0.02 + 4.41^2 \times 0.09}{2(4.78^2 - 4.41^2)} } = 0.8
+  \Delta \gamma = \gamma \sqrt{\frac{\omega^2 \Delta \omega}{2(\omega^2 - \omega_{res}^2)} + \frac{\omega_{res}^2\Delta \omega_{res}}{2(\omega^2 - \omega_{res}^2)}} = \gamma \sqrt{\frac{\omega^2 \Delta \omega + \omega_{res}^2 \Delta \omega_{res}}{2(\omega^2 - \omega_{res}^2)}} 
+\end{equation*}
+\begin{equation*}
+  = 1.32 \sqrt{ \frac{4.78^2 \times 0.02 + 4.41^2 \times 0.09}{2(4.78^2 - 4.41^2)} } = 0.8
 \end{equation*}
 
 Therefore,
