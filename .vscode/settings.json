@@ -1,37 +1,31 @@
 {
-    "latex-workshop.latex.recipes": [
-      {
-        "name": "pdflatex",
-        "tools": [
-          "pdflatex"
-        ]
-      }
-    ],
-    "latex-workshop.latex.tools": [
-      {
-        "name": "pdflatex",
-        "command": "pdflatex",
-        "args": [
-          "-synctex=1",
-          "-interaction=nonstopmode",
-          "-output-directory=${workspaceFolder}/oscillations/build",
-          "${workspaceFolder}/oscillations/main.tex"
-        ]
-      }
-    ],
-    "latex-workshop.latex.outDir": "${workspaceFolder}/oscillations/build",
-    "latex-workshop.latex.autoBuild.run": "never",
-    "latex-workshop.view.pdf.viewer": "tab",
-    "latex-workshop.latex.clean.fileTypes": [
-      "*.aux",
-      "*.log",
-      "*.out",
-      "*.toc",
-      "*.synctex.gz"
-    ],
-    "latex-workshop.latex.clean.subfolder.enabled": true,
-    "files.exclude": {
-      "**${workspaceFolder}/oscillations/build/**": true
-    }
-  }
-  
+    "taskExplorer.exclude": [
+        "**/.vscode-test/**",
+        "**/Assets/**",
+        "**/bin/**",
+        "**/build/**",
+        "**/dist/**",
+        "**/doc/**",
+        "**/example/**",
+        "**/examples/**",
+        "**/ext/**",
+        "**/obj/**",
+        "**/out/**",
+        "**/output/**",
+        "**/packages/**",
+        "**/release/**",
+        "**/releases/**",
+        "**/samples/**",
+        "**/sdks/**",
+        "**/static/**",
+        "**/target/**",
+        "**/test/**",
+        "**/third_party/**",
+        "**/vendor/**",
+        "**/work/**",
+        "/home/horki/projects/Mechanics-Lab/makefile",
+        "/home/horki/projects/Mechanics-Lab/oscillations/scripts/main.py",
+        "/home/horki/projects/Mechanics-Lab/oscillations/scripts/manage_data.py",
+        "/home/horki/projects/Mechanics-Lab/oscillations/scripts/prep_exercise_Q3.py"
+    ]
+}

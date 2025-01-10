@@ -1,17 +1,31 @@
-LATEX=pdflatex
+.RECIPEPREFIX = >
 
-all: oscillations/build/oscillations.pdf
+LATEX  = pdflatex
+PYTHON = python3
 
-data:
-	python3 oscillations/scripts/main.py
+MODE := tex
+LAB  := gyroscope
 
-script:
-	python3 oscillations/scripts/prep_exercise_Q3.py
+.PHONY: tex, make_tex, scripts, make_scripts, clean
 
-oscillations/build/oscillations.pdf: oscillations/main.tex
-	mkdir -p oscillations/build/
-	$(LATEX) -output-directory=oscillations/build/ oscillations/main.tex
-	$(LATEX) -output-directory=oscillations/build/ oscillations/main.tex
+all: $(MODE)
+
+tex:
+> $(MAKE) make_tex LAB=$(LAB)
+
+make_tex: $(LAB)/main.tex
+> mkdir -p build/$(LAB)
+> $(LATEX) -output-directory=build/$(LAB) $(LAB)/main.tex
+
+scripts:
+> $(MAKE) make_scripts LAB=$(LAB)
+
+make_scripts: $(LAB)/scripts/main.py
+> $(PYTHON) $(LAB)/scripts/main.py
 
 clean:
-	rm -rf oscillations/build/
+> rm -rf build/
+> rm -rf oscillations/auto/
+> rm -rf oscillations/sections/auto
+> rm -rf gyroscope/auto/
+> rm -rf gyroscope/sections/auto

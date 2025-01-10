@@ -1,8 +1,22 @@
-# Mechanics-Lab: Oscillations and Gyroscope
+# TODO
 
-**Note:** I am using Linux/Emacs so you might need to tweak your system somehow for it work properly. However, it does work on my system so you should not have any problems.
+- [ ] Implement *create* action for automating the creation of a new lab.
+- [ ] Support cross-live-editting between Emacs and Visual Studio Code.
+- [ ] Support other scripting languages.
+- [ ] Support flexible Python actions (for running mulible .py files like needed for *oscillations*)  
 
-# Prerequisites
+# Introduction
+
+This repository contains all the labs that we performed during the fresheman year of physics in the University of Groningen. The labs are:
+* Mechanics and Relativity
+    * oscillations
+    * gyroscope
+
+# Guide (for Visual Studio Code)
+
+**Note:** I am using Linux/Emacs so you might need to tweak your system somehow for it to work properly on Windows. However, it does work on my system so you should not have any problems.
+
+## Prerequisites
 1. Install [Visual Studio Code](https://code.visualstudio.com/).
 2. Install [MikTex](https://miktex.org/download). (LaTeX compiler)
 3. Install [Git](https://git-scm.com/downloads/win). (select *64-bit Git for Windows Setup*)
@@ -10,49 +24,41 @@
 
 Step 4 is somewhat tedious but crucial. This is like auth for git remote repositories. You will use the combination of the your github name and passphrase to push your changes to Github.
 
-# Setup the project
+## Setup the project
 
-1. Download the archive with the project [here](https://github.com/euwaka/Mechanics-Lab).
+1. Download the archive with the project [here](https://github.com/euwaka/labs).
 2. Unzip it.
 3. Open it in Visual Studio Code.
-4. In Visual Studio Code, install this extension: **LaTeX Workshop**
-5. Press *Ctrl+Shift+P* and enter *Preferences: Open Keyboard Shortcuts (JSON)*
-6. In between the **[]**, paste this code:
-```json
-{
-    "key": "ctrl+alt+c",
-    "command": "workbench.action.tasks.runTask",
-    "args": "Clean-up"
-}
-```
-7. Save the file.
+4. If extensions were not installed automatically, manually install:
+    * [LaTeX](https://marketplace.visualstudio.com/items?itemName=mathematic.vscode-latex)
+    * [PDF Viewer](https://marketplace.visualstudio.com/items?itemName=mathematic.vscode-pdf)
+    * [Task Explorer](https://marketplace.visualstudio.com/items?itemName=spmeesseman.vscode-taskexplorer)
+5. You are ready to go.
 
 # Usage
 
+1. Open a file that you work on (script, LaTeX, etc.).
+2. Make changes.
+3. Click one of the actions under *Task Explorer* in the Explorer Menu. (see later for more information on actions)
+
 ## Project Structure
 
-1. meta files:
-    * *makefile*: this is configuration for Linux/Emacs.
-    * *.vscode*: those are configurations for Visual Studio Code.
-    * *.gitignore*: here are listed files that will not be uploaded to Github (like .pdf, since it is not necessary)
-
-2. project files:
-    * *oscillations/*: this contains all LaTeX documents, *.csv* data, and images/graphs for **Oscillations Lab 1**.
-    * *gyroscope/*: this contains all LaTeX documents, *.csv* data, and images/graphs for **Gyroscope Lab 2**.
-
-3. LaTeX files (in *oscillations/* directory):
-    * *main.tex*: this is main file, which eventually gets compiled to the required .pdf (**IMPORTANT**: Add your surname and S-number to the *\author* field.)
+1. **labs**: the root directory contains separate directories for different labs (e.g., oscillations, gyroscope, etc.). Every file (.py, .jpeg, .tex, .csv, etc.) associated with a specific project is located under the directory with the name of the project.
+2. **meta files**:
+    * *makefile*: this is a build system that we use for Emacs/Visual Studio Code
+    * *.vscode*: those are configuraitons for Visual Studio Code.
+    * *.gitignore*: here are listed files that will not be uploaded to Github (like .pdf)
+3. **Project files (the same in every lab directory)**:
+    * *main.tex*: this is main file, which eventually gets compiled (via means of *makefile*) to the required .pdf in build/<project-name>/main.pdf
     * *sections/\*.tex*: those are sections (aka chapters) that are included in the *main.tex*, like **Theory**, **Preparatory Exercises**, **Experiment Setup**, etc.
     * *images*, *data*: contains *.csv* data files, and images.
+    * *scripts*: contains Python script files. (e.g., used for data analysis of .csv data files)
 
-## LaTeX in Visual Studio
+## Action (under Task Explorer)
 
-After you have installed everything, this is what you do:
-
-1. Make changes to .tex files.
-2. Press *Ctrl-Shift-B* to compile LaTeX. In *oscillations/build/*, you get desired pdf.
-3. Press *Ctrl-Alt-C* to clean-up. (remove build/ since it is unnecessary and bulky to commit to GitHub) This step is not necessary because build/ folder is listed under *.gitignore*, so it will not be pushed to Github anyways.
-4. When working with **LaTeX Workshop** in visual studio code, you get auto-completions, math symbols gallery, and a whole lot of other useful stuff.
+1. *clean*: removes **build/** and all other unnecessary junk.
+2. *<project-name>* (e.g., gyroscope): builds pdf from *<project-name>/main.tex* file.
+3. *<project-name>/scripts* (e.g., gyroscope/scripts): runs *<project-name>/scripts/main.py* script file.
 
 # Short manual
 

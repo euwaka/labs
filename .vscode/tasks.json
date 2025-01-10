@@ -1,57 +1,50 @@
 {
     "version": "2.0.0",
     "tasks": [
-      {
-        "label": "Sub Build Oscillations",
-        "type": "shell",
-        "command": "pdflatex",
-        "args": [
-          "-output-directory=${workspaceFolder}/oscillations/build",
-          "${workspaceFolder}/oscillations/main.tex"
-        ],
-        "group": {
-          "kind": "none",
-          "isDefault": false
+        {
+            "label": "oscillations",
+            "type": "shell",
+            "command": "make",
+            "args": ["tex", "LAB=oscillations"],
+            "detail": "Build LaTeX for oscillations",
+            "group": "build",
+            "problemMatcher": []
         },
-        "problemMatcher": [],
-        "detail": "Compile LaTeX document for oscillations"
-      },
-      {
-        "label": "Create build folder",
-        "type": "shell",
-        "command": "mkdir",
-        "args": [
-          "-p",
-          "oscillations/build/"
-        ],
-        "group": {
-          "kind": "none",
-          "isDefault": false
+        {
+            "label": "oscillations/scripts",
+            "type": "shell",
+            "command": "make",
+            "args": ["scripts", "LAB=oscillations"],
+            "detail": "Run the scripts for oscillations",
+            "group": "none",
+            "problemMatcher": []
         },
-        "detail": "Create build folders for pdflatex to work"
-      },
-      {
-        "label": "Clean-up",
-        "type": "shell",
-        "command": "rmdir",
-        "args": [
-          "/s",
-          "${workspaceFolder}\\oscillations\\build"
-        ],
-        "group": {
-          "kind": "none",
-          "isDefault": false
+        {
+            "label": "gyroscope",
+            "type": "shell",
+            "command": "make",
+            "args": ["tex", "LAB=gyroscope"],
+            "detail": "Build LaTeX for gyroscope",
+            "group": "build",
+            "problemMatcher": []
         },
-        "detail": "Remove build files"
-      },
-      {
-        "label": "Build Oscillations",
-        "group": {
-          "kind": "build",
-          "isDefault": true
+        {
+            "label": "gyroscope/scripts",
+            "type": "shell",
+            "command": "make",
+            "args": ["scripts", "LAB=gyroscope"],
+            "detail": "Run the scripts for gyroscope",
+            "group": "none",
+            "problemMatcher": []
         },
-        "dependsOn": ["Create build folder", "Sub Build Oscillations"]
-      }
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "make",
+            "args": ["clean"],
+            "detail": "Clean up the junk",
+            "group": "none",
+            "problemMatcher": []
+        }
     ]
-  }
-  
+}
