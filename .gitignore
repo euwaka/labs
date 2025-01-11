@@ -1,4 +1,4 @@
-oscillations/build
-oscillations/auto
-oscillations/sections/auto
+build/
+*/auto
+*/sections/auto
 *auto*
