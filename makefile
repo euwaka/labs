@@ -1,7 +1,12 @@
-.RECIPEPREFIX = >
-
 LATEX  = pdflatex
 PYTHON = python3
+RM = rm -rf
+CREATE_BUILD_DIR = mkdir -p "build/$(LAB)"
+
+ifeq ($(OS), Windows_NT)
+	RM := rmdir /s /q
+	CREATE_BUILD_DIR := powershell -Command "if (-Not (Test-Path -Path "build\$(LAB)")) {New-Item -ItemType Directory -Path "build\$(LAB)"}"
+endif
 
 MODE := tex
 LAB  := gyroscope
@@ -11,21 +16,24 @@ LAB  := gyroscope
 all: $(MODE)
 
 tex:
-> $(MAKE) make_tex LAB=$(LAB)
+	$(MAKE) make_tex LAB=$(LAB)
 
 make_tex: $(LAB)/main.tex
-> mkdir -p build/$(LAB)
-> $(LATEX) -output-directory=build/$(LAB) $(LAB)/main.tex
+	$(CREATE_BUILD_DIR)
+	$(LATEX) -output-directory="build/$(LAB)" "$(LAB)/main.tex"
+	$(LATEX) -output-directory="build/$(LAB)" "$(LAB)/main.tex"
 
 scripts:
-> $(MAKE) make_scripts LAB=$(LAB)
+	$(MAKE) make_scripts LAB=$(LAB)
 
-make_scripts: $(LAB)/scripts/main.py
-> $(PYTHON) $(LAB)/scripts/main.py
+make_scripts: "$(LAB)/scripts/main.py"
+	$(PYTHON) "$(LAB)/scripts/main.py"
 
 clean:
-> rm -rf build/
-> rm -rf oscillations/auto/
-> rm -rf oscillations/sections/auto
-> rm -rf gyroscope/auto/
-> rm -rf gyroscope/sections/auto
+	$(RM) "build/"
+	$(RM) "oscillations/auto/"
+	$(RM) "oscillations/sections/auto"
+	$(RM) "gyroscope/auto/"
+	$(RM) "gyroscope/sections/auto"
+
+	
