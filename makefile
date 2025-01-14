@@ -35,5 +35,3 @@ clean:
 	$(RM) "oscillations/sections/auto"
 	$(RM) "gyroscope/auto/"
 	$(RM) "gyroscope/sections/auto"
-
-	
