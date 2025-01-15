@@ -26,7 +26,7 @@ make_tex: $(LAB)/main.tex
 scripts:
 	$(MAKE) make_scripts LAB=$(LAB)
 
-make_scripts: "$(LAB)/scripts/main.py"
+make_scripts: 
 	$(PYTHON) "$(LAB)/scripts/main.py"
 
 clean:

@@ -1,4 +1,4 @@
-measurement;spinning_period;uncertainty_spinning_period;weigth;uncertainty_weight;lever_arm;uncertainty_lever_arm
+measurement;spinning_period;uncertainty_spinning_period;weight;uncertainty_weight;lever_arm;uncertainty_lever_arm
 1;0.30;0.01;29.9;0.1;33.2;0.4
 2;0.42;0.02;29.9;0.1;23.9;0.1
 3;0.49;0.02;29.9;0.1;33.2;0.4
