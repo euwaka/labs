@@ -1,5 +1,6 @@
 LATEX  = pdflatex
 PYTHON = python3
+BIB = biber
 RM = rm -rf
 CREATE_BUILD_DIR = mkdir -p "build/$(LAB)"
 
@@ -20,6 +21,10 @@ tex:
 
 make_tex: $(LAB)/main.tex
 	$(CREATE_BUILD_DIR)
+	$(LATEX) -output-directory="build/$(LAB)" "$(LAB)/main.tex"
+
+	$(BIB) build/$(LAB)/main
+
 	$(LATEX) -output-directory="build/$(LAB)" "$(LAB)/main.tex"
 	$(LATEX) -output-directory="build/$(LAB)" "$(LAB)/main.tex"
 

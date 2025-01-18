@@ -1,5 +1,11 @@
+{\color{gray}\hrule}
+\begin{center}
 \section{Discussion} \label{sec:discussion}
+\bigskip
+\end{center}
+{\color{gray}\hrule}
 
+\begin{multicols}{2}
 \subsection{No external forces}
 \label{sec:discussion:no}
 
@@ -16,7 +22,7 @@ Notably, this phenomenon explains why it is possible to throw a regularly shaped
 
 \subsection{Improvements} \label{sec:discussion:improvements}
 
-An insufficient number of processed precession frequencies ($\Omega$) and corresponding spinning periods ($T_{3}$) significantly affected the error in the calculation of the slope (TODO: which slope). Additionally, certain aspects of the gyroscope setup introduced deviation from the theoreical ideal case:
+An insufficient number of processed precession frequencies ($\Omega$) and corresponding spinning periods ($T_{3}$) significantly affected the error in the calculation of the slope (see result \ref{eq:results:slope}). Additionally, certain aspects of the gyroscope setup introduced deviation from the theoreical ideal case:
 
 1. The vertical axis of the gyroscope was not perfectly aligned, resulting in a slight tilt.
 
@@ -36,4 +42,5 @@ In either case, nutation established noise in data, leading to bigger uncertaint
 
 Finally, the spinning period ($T_{3}$) was calculated by manually estimating the time needed to make a full revolution (see \ref{sec:methods}) and evaluating the mean and the mean squared error. This manual calculation brought in a big error in the spinning period ($T_{3}$).
 
-To improve the accuracy of the slope and strengthen the foundation for the research question of this lab report, the following steps are recommended. First, a digital motor controlled by software can be used to launch and maintain the rotor. This would ensure a precise, constant, and controlled initial spinning angular velocities for each sample per every measurement. Besides, videos of the spinning of the rotor can be fed into a neural network capable of feature extracting (e.g., see \cite{2}). Neural network extracts the spinning period ($T_{3}$) with a much higher accuracy. Alternatively, a separate sensor can be placed in the precessing frame of reference that would measure the spinning period during the course of the sample's motion. Lastly, counterweights and torque-introducing weights should be set in-place using, for instance, nails protruding through the rotory axis. The locations for all weights should be estimated using computer techniques.   
+To improve the accuracy of the slope and strengthen the foundation for the research question of this lab report, the following steps are recommended. First, a digital motor controlled by software can be used to launch and maintain the rotor. This would ensure a precise, constant, and controlled initial spinning angular velocities for each sample per every measurement. Besides, videos of the spinning of the rotor can be fed into a neural network capable of feature extracting (e.g., see \cite{nn}). Neural network extracts the spinning period ($T_{3}$) with a much higher accuracy. Alternatively, a separate sensor can be placed in the precessing frame of reference that would measure the spinning period during the course of the sample's motion. Lastly, counterweights and torque-introducing weights should be set in-place using, for instance, nails protruding through the rotory axis. The locations for all weights should be estimated using computer techniques.   
+\end{multicols}

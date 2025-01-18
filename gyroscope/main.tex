@@ -1,44 +1,81 @@
-\documentclass[a4paper, 9pt]{article}
+\documentclass[a4paper,9pt]{article}
 
-\usepackage{titling}
-\usepackage{float}
+\usepackage{anysize}
+\usepackage{fancyhdr}
+\usepackage{soul}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{lipsum}
 \usepackage{amsmath}
-\usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
-\usepackage{lipsum}
-\usepackage[margin=0.5in]{geometry}
-\usepackage[utf8]{inputenc}
-\usepackage[backend=biber, style=alphabetic, sorting=ynt]{biblatex}
+\usepackage{multicol}
+\usepackage{parskip}
+\usepackage{float}
+\usepackage[backend=biber]{biblatex}
+\usepackage[font=scriptsize]{caption}
 
-\title{Gyroscope}
-\author{Artur Topal (S5942128), Tyn Rendering (S6106366)}
-\date{14/01/2025}
+% settings
+\addbibresource{test/references.bib}
 
+\marginsize{2cm}{2cm}{1cm}{2cm}
+\renewcommand{\headrulewidth}{0pt}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=CadetBlue,
+    filecolor=CadetBlue,      
+    urlcolor=CadetBlue,
+}
+  
+\setlength\columnsep{18pt}
+\renewenvironment{abstract}
+ {\par\noindent\textbf{\abstractname}\ \ignorespaces \\}
+ {\par\noindent\medskip}
+ 
+ 
 \begin{document}
 
-\maketitle
+% Header
+\pagestyle{fancy}
+\thispagestyle{empty}
+\fancyhead[R]{\textit{University of Groningen}}
+\fancyhead[L]{}
+
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+
+\begin{center}
+\Large{\textbf{Gyroscope}}
+\vspace{0.4cm}
+\normalsize
+\\ Artur Topal, Tyn Rendering \\
+\vspace{0.1cm}
+\textit{University of Groningen}
+\medskip
+\normalsize
+\end{center}
+
+{\color{gray}\hrule}
+\vspace{0.4cm}
+
 \begin{abstract}
-  \textit{\lipsum{1}}
+\input{test/abstract.tex}
 \end{abstract}
 
-\tableofcontents
-\input{gyroscope/sections/introduction}
-\input{gyroscope/sections/theory}
-\input{gyroscope/sections/methods}
-\input{gyroscope/sections/results}
-\input{gyroscope/sections/discussion}
-\input{gyroscope/sections/conclusions}
+{\color{gray}\hrule}
+\medskip
 
+\input{test/sections/introduction.tex}
+\input{test/sections/theory.tex}
+\input{test/sections/methods.tex}
+\input{test/sections/results.tex}
+\input{test/sections/discussion.tex}
+\input{test/sections/conclusions.tex}
 \appendix
-\input{gyroscope/sections/appendices/precession_raw_data}
-\input{gyroscope/sections/appendices/errors}
+\input{test/sections/precession.tex}
+\input{test/sections/errors.tex}
 
-\begin{thebibliography}{99}
-\bibitem{1}
-Morin, D. (n.d.). Introduction to Classical Mechanics. Cambridge University Press.
-\bibitem{2}
-Teed, Z., \& Deng, J. (2020, 26 maart). RAFT: Recurrent All-Pairs Field Transforms for Optical Flow. arXiv.org. https://arxiv.org/abs/2003.12039
-\end{thebibliography}
+\printbibliography
 
 \end{document}
