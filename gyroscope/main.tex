@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper, 9pt]{article}
 
 \usepackage{titling}
 \usepackage{float}
@@ -6,57 +6,39 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
-\usepackage[margin=0.8in]{geometry}
+\usepackage{lipsum}
+\usepackage[margin=0.5in]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[backend=biber, style=alphabetic, sorting=ynt]{biblatex}
-\usepackage{tikz}
 
-% Title information
 \title{Gyroscope}
 \author{Artur Topal (S5942128), Tyn Rendering (S6106366)}
-\date{PUT THE DATE IN HERE}
+\date{14/01/2025}
 
 \begin{document}
 
-\begin{titlingpage}
-  \centering
-  \maketitle
-  \vspace{2cm}
-  \begin{abstract}
-  \textit{Abstrac3.}
+\maketitle
+\begin{abstract}
+  \textit{\lipsum{1}}
 \end{abstract}
 
-\end{titlingpage}
-
-\break
 \tableofcontents
-\break
-\section{Introduction} \label{sec:introduction}
 \input{gyroscope/sections/introduction}
-
-\section{Theory} \label{sec:theory}
 \input{gyroscope/sections/theory}
-
-\section{Methods} \label{sec:methods}
 \input{gyroscope/sections/methods}
-
-\section{Results} \label{sec:results}
 \input{gyroscope/sections/results}
-
-\section{Discussion} \label{sec:discussion}
 \input{gyroscope/sections/discussion}
-
-\section{Conclusions} \label{sec:conclusions}
 \input{gyroscope/sections/conclusions}
 
-% Perhaps, we will need \appendix
+\appendix
+\input{gyroscope/sections/appendices/precession_raw_data}
+\input{gyroscope/sections/appendices/errors}
 
 \begin{thebibliography}{99}
-
 \bibitem{1}
 Morin, D. (n.d.). Introduction to Classical Mechanics. Cambridge University Press.
-  
+\bibitem{2}
+Teed, Z., \& Deng, J. (2020, 26 maart). RAFT: Recurrent All-Pairs Field Transforms for Optical Flow. arXiv.org. https://arxiv.org/abs/2003.12039
 \end{thebibliography}
-
 
 \end{document}

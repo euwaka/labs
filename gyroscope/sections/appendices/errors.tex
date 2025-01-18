@@ -1,0 +1,30 @@
+\section{Error Analysis} \label{appendix:errors}
+
+\subsection{Precession Frequency}
+\label{appendix:errors:precession_frequency}
+
+In table \ref{tab:results:precession} and figure \ref{fig:results:processed_precession}, there two types of precession frequency measurement, \emph{Type I} and \emph{Type II}. Their errors were estimated in two different ways.
+
+For \emph{Type I} measurement, standard error was estimated from measurement's time distribution.
+\begin{equation*}
+  \Delta\Omega = \frac{\sigma_{\Omega}}{\sqrt{N}} = \frac{1}{N}\sqrt{\sum\limits_{i=1}^N(\Omega - \left<\Omega\right>)^2}
+\end{equation*}
+where $N$ is a number of samples in a measurement and $\left< \Omega \right>$ is the mean (effective) precession frequency. This error is depicted in figure \ref{fig:appendix:raw_precession_data}, and in figure \ref{fig:results:processed_precession} and table \ref{tab:results:precession} for \emph{Type I} points.
+
+For \emph{Type II} measurement, the mean and the mean squared error of two points (see figure \ref{fig:appendix:raw_precession_data}) were taken. For instance, for point $\#1 (4/5)$ the following equations were used:
+\begin{equation*}
+  \Omega \equiv \Omega_{\#1} = \frac{\left< \Omega_{4} \right> + \left< \Omega_{5} \right>}{2}
+\end{equation*}
+\begin{equation*}
+  \Delta\Omega \equiv \Delta\Omega_{\#1} = \frac{\sqrt{(\left< \Omega_{4} \right> - \Omega_{\#1})^{2} + (\left< \Omega_{5} \right> - \Omega_{\#1})^{2}}}{2}
+\end{equation*}
+
+Plugging in the values for point $\#1 (4/5)$ from figure \ref{fig:appendix:raw_precession_data} gives:
+\begin{equation*}
+  \Omega \equiv \Omega_{\#1} = \frac{0.494178 + 0.405244}{2} = 0.449711
+\end{equation*}
+\begin{equation*}
+  \Delta\Omega \equiv \Delta\Omega_{\#1} = \frac{\sqrt{(0.494178 - 0.449711)^{2} + (0.405244 - 0.449711)^{2}}}{2} = 0.031443
+\end{equation*}
+
+Errors, calculated in this way, are shown in figure \ref{fig:results:processed_precession} and table \ref{tab:results:precession} for \emph{Type II} points.
