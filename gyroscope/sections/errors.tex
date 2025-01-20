@@ -30,7 +30,7 @@ Plugging in the values for point $\#1 (4/5)$ from figure \ref{fig:appendix:raw_p
   \Omega \equiv \Omega_{\#1} = \frac{0.494178 + 0.405244}{2} = 0.449711
 \end{equation*}
 \begin{equation*}
-  \Delta\Omega_{\#1} = \frac{\sqrt{(0.494178 - 0.449711)^{2} + (0.405244 - 0.449711)^{2}}}{2}
+  \Delta\Omega = \frac{\sqrt{(0.494178 - 0.449711)^{2} + (0.405244 - 0.449711)^{2}}}{2}
 \end{equation*}
 \begin{equation*}
   \Rightarrow \Delta \Omega = \Delta \Omega_{\#1} = 0.031443
@@ -38,29 +38,29 @@ Plugging in the values for point $\#1 (4/5)$ from figure \ref{fig:appendix:raw_p
 
 Errors, calculated in this way, are shown in figure \ref{fig:results:processed_precession} and table \ref{tab:results:precession} for \emph{Type II} points.
 
-\subsection{$T_p$}
-  In this case, $T_{p, \text{calculated}} \propto \delta M + \delta l + \delta I_3 + \delta T_3$. The uncertainties in M and lare given by \label{eq:results:weight_err} and \label{eq:deltal2}, respectively. The moment of inertia, $\delta I_3 \propto \delta M_d + \delta R_d$. The value of $M_d$ is given, and therefore assumed to be a constant with no uncertainty. The uncertainty in $R_d$ is given by:
-  \begin{equation*}
-    \delta R_d = \fraq{\delta r}{sqrt(N)}
-  \end{equation*}
-Where $\delta r$ is the uncertainty in the ruler, which is 0.1 centimeters. The error in $I_3$ gets propagated as:
+\subsection{Precession period}
+  In this case, $T_{p, \text{calculated}} \propto \Delta M, \Delta l, \Delta I_3, \Delta T_3$. The uncertainties in M and l are given by equations \ref{eq:results:weight_err} and \ref{eq:results:l_err}, respectively. The moment of inertia, $\Delta I_3 \propto \Delta M_d, \Delta R_d$. The value of $M_d$ is given, and therefore assumed to be a constant with no uncertainty. The uncertainty in $R_d$ is given by:
 \begin{equation*}
-  \delta I_3 = 2M_d \frac{\delta R_d}{R_d}I_3
+    \Delta R_d = \frac{\Delta r}{\sqrt{N}}
+\end{equation*}
+Where $\Delta r$ is the uncertainty in the ruler, which is 0.1 centimeters. The error in $I_3$ gets propagated as:
+\begin{equation*}
+  \Delta I_3 = 2M_d \frac{\Delta R_d}{R_d}I_3
 \end{equation*}
 
-For $\delta T_3$ the error was calculated using:
+For $\Delta T_3$, the error was calculated using:
 \begin{equation*}
-  \delta T_3 = \sqrt{\frac{1}{N-1} \sum_{i=1}^N (T_{3, i} - ⟨T_{3, i}⟩)^2}
+  \Delta T_3 = \sqrt{\frac{1}{N-1} \sum_{i=1}^N (T_{3, i} - \left< T_{3, i} \right> )^2}
 \end{equation*}
 
-These uncertainties combine to form the equation for $T_{p, \text{calculated}}$:
+These uncertainties combine to form the equation for $T_{p_{c}} = T_{p, \text{calculated}}$:
 \begin{equation*}
-  \Delta T_{p,\text{calculated}} = T_p \sqrt{\left(\frac{\Delta I_3}{I_3}\right)^2 + \left(\frac{\Delta M}{M}\right)^2 + \left(\frac{\Delta l}{l}\right)^2 + \left(\frac{\Delta T_3}{T_3}\right)^2}
+  \Delta T_{p_{c}} = T_p \sqrt{\left(\frac{\Delta I_3}{I_3}\right)^2 + \left(\frac{\Delta M}{M}\right)^2 + \left(\frac{\Delta l}{l}\right)^2 + \left(\frac{\Delta T_3}{T_3}\right)^2}
 \end{equation*}
 
-The only variable $T_{p, \text{measured}}$ is based on is $\Omega$, $\delta T_{p, \text{measured}}$ was obtained by taking the derivative of $T_{p, \text{measured}}$ w.r.t. $\Omega$, from this we get:
+The only variable $T_{p, \text{measured}}$ is based on is $\Omega$, so $\Delta T_{p, \text{measured}}$ was obtained by taking the derivative of $T_{p, \text{measured}}$ with respect to $\Omega$. Thus,
 \begin{equation*}
-  \delta T_{p, \text{measured}} = \fraq{2\pi}{\Omega^2}\delta \Omega
+  \Delta T_{p, \text{measured}} = \frac{2\pi}{\Omega^2}\Delta \Omega
 \end{equation*}
 
 \end{multicols}

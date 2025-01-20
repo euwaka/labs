@@ -14,13 +14,13 @@ The mass of the weights were calculated using digital weights: $M = 29.9 \pm 0.1
   \Delta M = \frac{1}{N}\sqrt{\sum\limits_{i=1}^{N}(M_{i} - \left\langle M \right\rangle)^{2}} = 0.1 (g)
 \end{equation}
 
-As discussed in section \ref{sec:discussion}, weights were attached to either ends of the gyroscope. However, weight's position was pushed towards the gyroscope vertical axis due to rotations (see figure \ref{fig:results:locs}). Three possible locations were measured using vernier callipers to be:
+As discussed in section \ref{sec:methods}, weights were attached to either ends of the gyroscope. However, weight's position was pushed towards the gyroscope vertical axis due to rotations (see figure \ref{fig:results:locs}). Three possible locations were measured using vernier callipers to be:
 \begin{equation*}
   \left\langle l_{I} \right\rangle = \frac{1}{N}\sum\limits_{i=1}^{N}l_{Ii} = 33.0 (cm)
 \end{equation*}
-\begin{equation*}
+\begin{equation} \label{eq:results:l_err}
   \Delta l_{I} = \frac{1}{N}\sqrt{\sum\limits_{i=1}^{N}(l_{Ii} - \left\langle l_{I} \right\rangle)^{2}} = 0.4 (cm)
-\end{equation*}
+\end{equation}
 
 Thus, $l_{I} = 33.0 \pm 0.4 (cm)$. Similarly, $l_{II} = 19.7 \pm 0.1 (cm)$ and $l_{III} = 23.9 \pm 0.1 (cm)$.
 
@@ -45,7 +45,8 @@ Thus, $l_{I} = 33.0 \pm 0.4 (cm)$. Similarly, $l_{II} = 19.7 \pm 0.1 (cm)$ and $
 \end{table}
 
 \begin{multicols}{2}
-In the first part of the experiment the rotor’s behavior without external forces was observed, for this the rotor was rotated by hand. After this the base was rotated, during the rotation of the base the rotor remained stationary. This is caused by conservation of angular momentum. Angular momentum conservation also explains why it is only possible to throw a flat object over a long distance if it has spin; a spinning object resists changes in its orientation, this stabilizes the object's flight and keeps it flat, reducing wobbling.
+ In the first part of the experiment the rotor’s behavior without external forces was observed, for this the rotor was rotated by hand. After this the base was rotated, during the rotation of the base the rotor remained stationary. This is caused by conservation of angular momentum (see section \ref{sec:discussion:no} for further details).
+  
 \begin{figure}[H]
   \centering
   \includegraphics[width=\columnwidth]{gyroscope/images/locs}
@@ -53,13 +54,13 @@ In the first part of the experiment the rotor’s behavior without external forc
   \label{fig:results:locs}
 \end{figure}
 
-The gyroscope would only precess if a torque was applied to it, this was done by adding weights to the setup. The weight had a mass of $29.9 \pm 0.1 (g)$ (see equation \ref{eq:results:weight} and \ref{eq:results:weight_err}), the masses were placed at distances of $l_{I}$, $l_{II}$ and $l_{III}$ from the vertical axis of the gyroscope.
-Next the moment of inertia of the rotor around its own axis was determined, this was done using equation \ref{eq:theory:id}.
+The gyroscope would only precess if torque was applied to it, this was done by adding weights to the setup. The weight had a mass of $29.9 \pm 0.1 (g)$ (see equation \ref{eq:results:weight} and \ref{eq:results:weight_err}), the masses were placed at distances of $l_{I}$, $l_{II}$ and $l_{III}$ from the vertical axis of the gyroscope.
+Next, rotor's moment of inertia around its own axis ($\hat{x}_{3}$) was determined, this was done using equation \ref{eq:theory:id},
 where $M_d = 1.74 (kg)$ is the mass of the rotor disc and $R_d = 12.47 \pm 0.04 (cm)$ is the radius of the disc. Substituting in the values of $M_d$ and $R_d$ gave $I_3 = 0.0271 \pm 0.0004 (kg \cdot m^2)$. After this, $T_3$ was calculated by the following equation:
 \begin{equation*}
     T_3 = \frac{10}{A_{r}}
 \end{equation*}
-Where $A_{r}$ is the average rotaions per 10 seconds, which was determined by filming the setup an dividing the film in $10$ second long clips, counting the rotations per clip and then taking the average. The differnt values of $T_3$ are shown in Table x in the appendix. The previous measured components were used to calculate $T_{p, \text{calculated}}$ using equation \ref{eq:theory:precession_period}. $T_{p, \text{measured}}$ was calculated using:
+where $A_{r}$ is the average number of rotations per 10 seconds, which was determined by filming the setup and dividing the film in $10$ second long clips, counting the rotations per clip and then taking the average. The previous measured components were used to calculate $T_{p, \text{calculated}}$ using equation \ref{eq:theory:precession_period}. $T_{p, \text{measured}}$ was calculated using:
 \begin{equation*}
     T_{p, \text{measured}} = \frac{2\pi}{\Omega}
 \end{equation*}
