@@ -26,6 +26,11 @@
         "/home/horki/projects/Mechanics-Lab/makefile",
         "/home/horki/projects/Mechanics-Lab/oscillations/scripts/main.py",
         "/home/horki/projects/Mechanics-Lab/oscillations/scripts/manage_data.py",
-        "/home/horki/projects/Mechanics-Lab/oscillations/scripts/prep_exercise_Q3.py"
+        "/home/horki/projects/Mechanics-Lab/oscillations/scripts/prep_exercise_Q3.py",
+        "/home/horki/projects/labs/makefile",
+        "/home/horki/projects/labs/gyroscope/scripts/main.py",
+        "/home/horki/projects/labs/oscillations/scripts/main.py",
+        "/home/horki/projects/labs/oscillations/scripts/prep_exercise_Q3.py",
+        "/home/horki/projects/labs/oscillations/scripts/manage_data.py"
     ]
 }

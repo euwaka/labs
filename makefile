@@ -23,10 +23,10 @@ make_tex: $(LAB)/main.tex
 	$(CREATE_BUILD_DIR)
 	$(LATEX) -output-directory="build/$(LAB)" "$(LAB)/main.tex"
 
-	$(BIB) build/$(LAB)/main
+#	$(BIB) build/$(LAB)/main
 
-	$(LATEX) -output-directory="build/$(LAB)" "$(LAB)/main.tex"
-	$(LATEX) -output-directory="build/$(LAB)" "$(LAB)/main.tex"
+#	$(LATEX) -output-directory="build/$(LAB)" "$(LAB)/main.tex"
+#	$(LATEX) -output-directory="build/$(LAB)" "$(LAB)/main.tex"
 
 scripts:
 	$(MAKE) make_scripts LAB=$(LAB)
