@@ -4,8 +4,7 @@
         {
             "label": "oscillations",
             "type": "shell",
-            "command": "make",
-            "args": ["tex", "LAB=oscillations"],
+            "command": "make MODE=latex NAME=oscillations",
             "detail": "Build LaTeX for oscillations",
             "group": "build",
             "problemMatcher": []
@@ -13,8 +12,7 @@
         {
             "label": "oscillations/scripts",
             "type": "shell",
-            "command": "make",
-            "args": ["scripts", "LAB=oscillations"],
+            "command": "make MODE=scripts NAME=oscillations",
             "detail": "Run the scripts for oscillations",
             "group": "none",
             "problemMatcher": []
@@ -22,8 +20,7 @@
         {
             "label": "gyroscope",
             "type": "shell",
-            "command": "make",
-            "args": ["tex", "LAB=gyroscope"],
+            "command": "make MODE=latex NAME=gyroscope",
             "detail": "Build LaTeX for gyroscope",
             "group": "build",
             "problemMatcher": []
@@ -31,8 +28,7 @@
         {
             "label": "gyroscope/scripts",
             "type": "shell",
-            "command": "make",
-            "args": ["scripts", "LAB=gyroscope"],
+            "command": "make MODE=scripts NAME=gyroscope",
             "detail": "Run the scripts for gyroscope",
             "group": "none",
             "problemMatcher": []
@@ -40,8 +36,7 @@
         {
             "label": "clean",
             "type": "shell",
-            "command": "make",
-            "args": ["clean"],
+            "command": "make clean",
             "detail": "Clean up the junk",
             "group": "none",
             "problemMatcher": []
@@ -70,5 +65,5 @@
 		"type": "promptString",
 		"description": "Enter commit message"
 	    },
-	],
+    ],
 }

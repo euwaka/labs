@@ -17,16 +17,24 @@
 - [ ] Implement *create* action for automating the creation of a new lab.
 - [ ] Support real-time collaborative editing between Emacs and Visual Studio Code.
 - [ ] Support other scripting languages (like Lua or Julia)
-- [ ] Support flexible Python actions (for running multiple .py files like needed for *oscillations*)  
+- [ ] Support flexible Python actions (for running multiple .py files like needed for *oscillations*)
+- [ ] Update vscode actions with C
 
 # Introduction
 
-This repository contains all the Physics labs that I and my lab partners performed in the University of Groningen. The labs are:
+This repository contains all the Physics and Computer Science labs and assignments that I and/or my lab partners performed in the University of Groningen. The labs are:
 * Mechanics and Relativity
     * oscillations
     * gyroscope
 * Electricity and Magnetism
     * capacitors
+* Algorithms and Data Structures in C
+    * planes
+	* equations
+* Assignments
+    * linear-algebra
+	* calculus
+	* computational-methods-1
 
 # Guide (for Visual Studio Code)
 

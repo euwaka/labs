@@ -3,3 +3,6 @@ build/
 */sections/auto
 *auto*
 gyroscope/data/data.csv
+venv/
+*.ipynb_checkpoints*
+calculus/W3/img/*.png
