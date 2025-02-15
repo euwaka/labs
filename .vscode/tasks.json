@@ -69,7 +69,7 @@
 	    "id": "branchChoice",
 	    "type": "pickString",
 	    "description": "Select the branch to work on",
-	    "options": ["electromagnetism"],
+	    "options": ["main", "electromagnetism"],
 	    "default": "electromagnetism"
 	}
     ],
