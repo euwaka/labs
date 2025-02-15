@@ -2,13 +2,15 @@
 
 - [TODO](#todo)
 - [Introduction](#introduction)
-- [Guide (for Visual Studio Code)](#guide-for-visual-studio-code)
+- [Guide](#guide)
   - [Prerequisites](#prerequisites)
-  - [MikTex on Windows](#miktex-on-windows)
-  - [Github](#github)
+  - [Setup](#setup)
 - [Usage](#usage)
   - [Project Structure](#project-structure)
-- [Actions](#actions-under-task-explorer)
+  - [Actions](#actions)
+- [Appendix](#appendix)
+  - [MikTex](#miktex)
+  - [Results](#results)
 - [References](#references)
 
 # TODO
@@ -22,20 +24,20 @@
 # Introduction
 
 This repository contains all the Physics and Computer Science labs and assignments that I and/or my lab partners performed in the University of Groningen. The labs are:
-* Mechanics and Relativity
+* Mechanics and Relativity (Artur Topal + Tyn Rendering)
     * oscillations
     * gyroscope
-* Electricity and Magnetism
+* Electricity and Magnetism (Maartje + Artur Topal)
     * capacitors
-* Algorithms and Data Structures in C
+* Algorithms and Data Structures in C (Artur Topal + Lucas)
     * planes
 	* equations
-* Assignments
+* Assignments (Artur Topal)
     * linear-algebra
 	* calculus
 	* computational-methods-1
 
-# Guide (for Visual Studio Code)
+# Guide
 
 **Note:** I am using Linux/Emacs so you might need to tweak your system somewhat for it to work properly on Windows/MacOS.
 
@@ -46,37 +48,17 @@ This repository contains all the Physics and Computer Science labs and assignmen
 4. Install [Git](https://git-scm.com/downloads/win). (select *64-bit Git for Windows Setup*)
 5. Follow [this manual](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=windows) to setup git ssh.
 
-Stup 3 require one more configuration on Windows - adding the *make* program to PATH. To do this, follow the steps under [MikTex](#miktex-on-windows) 
+On Windows, step 3 also requires the addition of *make* to PATH. To do this, follow the [MikTex](#miktex) appendix. Step 5 is tedious but important. This allows you to setup authentication for all git remote repositories. On Windows (not on MacOS/Unix/Linux), after each git push/pull (discussed later), you have to enter your username and passphrase to push the changes on the server.
 
-Step 5 is tedious but crucial. This is like auth for git remote repositories. You will use the combination of your github name and passphrase to push your changes to Github. If you use the Task (aka the button) in Visual Studio Code, you would also need to enter the passphrase in the prompt.
+## Setup
 
-## Setup the project
+<img src="meta/vscode.png" alt="Visual Studio Code Setup" width="400" />
 
-### MikTex on Windows
-
-1. Type *PATH* in the search bar. Then, open *Edit the system environment variables*
-![Search bar](meta/OpenPATH.png)
-
-2. In the appeared window, click *Environment Variables...*
-![Environment Variables...](meta/ClickEnv.png)
-
-3. Then, double-click the *Path* like shown in the image below
-![Double-click Path](meta/DoubleClick.png)
-
-4. In the new window, click *New*
-![Click New](meta/ClickNew.png)
-
-5. In the prompt, enter this **exact** path: *C:\\Program Files (x86)\\GnuWin32\\bin* and click *OK* twice like shown in the image below
-![Enter PATH to the makefile executable](meta/ClickOK.png)
-
-6. Done.
-
-### Github 
-
-![Visual Studio Code Setup](meta/vscode.png)
-
-1. Download the archive with the project [here](https://github.com/euwaka/labs/tree/electromagnetism).
-2. Unzip it.
+1. Download the archive with the project under "*Code/Download Zip*" using one of the links below:
+   - Tyn: [main](https://github.com/euwaka/labs)
+   - Maartje: [electromagnetism](https://github.com/euwaka/labs/tree/electromagnetism)
+   - Joren: [test](https://github.com/euwaka/labs/tree/test)
+2. Unzip it in your preferred path.
 3. Open it in Visual Studio Code. You can configure Visual Studio Code to your liking (an example is shown on the image above).
 4. If extensions were not installed automatically, manually install:
     * [LaTeX](https://marketplace.visualstudio.com/items?itemName=mathematic.vscode-latex)
@@ -85,13 +67,14 @@ Step 5 is tedious but crucial. This is like auth for git remote repositories. Yo
 5. You are ready to go.
 
 **Note**: on the first LaTeX compilation, *MikTex* will prompt you to install many LaTeX packages that are used in LaTeX source files. This is done only once, and there is a tick (see the image below) on the prompt which allows the installation of all the required packages at once.
-![Avoid MikTex](meta/MikTex.png)
+
+<img src="meta/MikTex.png" alt="Avoid MikTex" width="400" />
 
 # Usage
 
 1. Open a file that you work on (Python script, LaTeX source, etc.).
 2. Make changes.
-3. Click one of the actions under *Task Explorer* in the Explorer Menu. (see later for more information on actions)
+3. Click one of the actions under *Task Explorer* in the Explorer Menu. (see [Actions](#actions) for more informations on *Task Explorer*)
 
 ## Project Structure
 
@@ -103,23 +86,62 @@ Step 5 is tedious but crucial. This is like auth for git remote repositories. Yo
 	* *meta/*: images for the README.md file are here
 3. **Project files (the same in every lab directory)**:
     * *main.tex*: this is the main file, which eventually gets compiled (via means of *makefile*) to the required .pdf in build/<project-name>/main.pdf
-    * *sections/\*.tex*: those are sections (aka chapters) that are included in the *main.tex*, like **Theory** (theory.tex), **Preparatory Exercises** (prep.tex), **Methods** (methods.tex), etc.
+    * *sections/\*.tex*: those are sections (aka chapters) that are included in the *main.tex*, like **Theory** (theory.tex), **Preparatory Exercises** (prep_asnwers.tex), **Methods** (methods.tex), etc.
     * *images*, *data*: contains *.csv* data files, and images.
     * *scripts*: contains Python script files. (e.g., used for data analysis of .csv data files, or simulations)
 
-## Actions (under Task Explorer)
+## Actions
 
-The only actions that can be clicked are located under the *vscode* label. Other labels like *python* or *make* can be removed by the right click and then "add to excludes list." Besides, Visual Studio Code is highly customizable so you might tweak it to your preference.
+The only actions that can be clicked are located under the *vscode* label. Other labels like *python* or *make* can be removed by the right click and then "add to excludes list."
 
-![Task Explorer](meta/TaskExp.png)
+<img src="meta/TaskExp.png" alt="Task Explorer" width="400" />
 
 1. *clean*: removes **build/** and all other unnecessary junk.
-2. *<project-name>* (e.g., gyroscope): builds the .pdf file from *<project-name>/main.tex* file.
+2. *<project-name>* (e.g., gyroscope or capacitors): builds the .pdf file from *<project-name>/main.tex* file.
 3. *<project-name>/scripts* (e.g., gyroscope/scripts): runs *<project-name>/scripts/main.py* Python script file.
-4. *git/pull*: pulls the most recent changed from Github. **NOTE**: Choose your branch!
-5. *git/push*: updates Github with your changes, and prompts the commit comment. **NOTE**: Write the comment in the prompt! Choose your branch!
+4. *git/pull*: pulls the most recent changed from Github.
+5. *git/push*: updates Github with your changes, and prompts the commit comment. **NOTE**: Write the commit comment in the prompt!
 
-## References
+# Appendix
+
+## MikTex
+
+1. Type *PATH* in the search bar. Then, open *Edit the system environment variables*
+
+<img src="meta/OpenPATH.png" alt="Search bar" width="300" />
+
+2. In the appeared window, click *Environment Variables...*
+
+<img src="meta/ClickEnv.png" alt="Environment Variables..." width="300" />
+
+3. Then, double-click the *Path* like shown in the image below
+
+<img src="meta/DoubleClick.png" alt="Double-click Path" width="300" />
+
+4. In the new window, click *New*
+
+<img src="meta/ClickNew.png" alt="Click New" width="300" />
+
+5. In the prompt, enter this **exact** path: *C:\\Program Files (x86)\\GnuWin32\\bin* and click *OK* twice like shown in the image below
+
+<img src="meta/ClickOK.png" alt="Enter PATH to the makefile executable" width="300">
+
+6. Done.
+
+## Results
+
+| Subject  | A1     | A2     | A3     | A4     |
+| ---      | ---    | ---    | ---    | ---    |
+| Calculus | Week 3 | Week 4 | Week 5 | Week 7 |
+| ---      | ---    | ---    | ---    | ---    |
+| Grade    | 9.5    | 9.0    | 9.5    | 9.3    |
+| M&R      | oscillations | gyroscope | - | - |
+| ---      | ---    | ---    | ---    | ---    |
+| Grade    | 10 | 10 | - | - |
+
+# References
 
 1. [LaTeX Docs](https://www.latex-project.org/help/documentation/)
 2. [Git Docs](https://git-scm.com/docs)
+
+
