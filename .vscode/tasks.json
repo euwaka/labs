@@ -33,7 +33,6 @@
 	    "group": "none",
 	    "problemMatcher": []
 	},
-	// git/push action
 	{
 	    "label": "git/push",
 	    "type": "shell",
