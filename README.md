@@ -9,7 +9,6 @@
 - [Usage](#usage)
   - [Project Structure](#project-structure)
 - [Actions](#actions-under-task-explorer)
-- [DEPRECATED Short Manual](#deprecated-short-manual)
 - [References](#references)
 
 # TODO
@@ -117,68 +116,8 @@ The only actions that can be clicked are located under the *vscode* label. Other
 1. *clean*: removes **build/** and all other unnecessary junk.
 2. *<project-name>* (e.g., gyroscope): builds the .pdf file from *<project-name>/main.tex* file.
 3. *<project-name>/scripts* (e.g., gyroscope/scripts): runs *<project-name>/scripts/main.py* Python script file.
-4. *git/pull*: pulls the most recent changed from Github.
-5. *git/push*: updates Github with your changes, and prompts the commit comment.
-
-# DEPRECATED Short manual
-
-This section is deprecated as everything is automated in Visual Studio Code.
-
-## Git
-
-### Description
-Git is a version control system. It allows users:
-1. Push files to the Github portal.
-2. Pull changes from the Github server (previous versions of files).
-3. Collaboration: *we can work on the project simultaneously, and as long as there are no conflicts, we can easily update Github repo.*
-4. (*more advanced use*) Branches: *we can work in different branches so both of us will have their own version of the project. Then, we can merge branches together to get our final project*
-
-### Useful commands
-
-1. Use this command to download the project to your local machine.
-```bash
-$ git clone <repository-url>
-```
-
-2. Always run this command before making any changes to ensure your local files are up-to-date with the server.
-```bash
-$ git pull origin main
-```
-
-3. After making changes to the project, you to stage them before a commit and push.
-```bash
-$ cd <your root path to Mechanics-Lab>
-$ git add .
-```
-
-4. Once files are staged, create a commit to save the changes with a useful short message.
-```bash
-$ git commit -m "Useful short message"
-```
-
-5. Push changes to the remote repository on Github.
-```bash
-$ git push origin main
-```
-
-You can also run the initial command
-```bash
-$ git push --set-upstream origin main
-```
-which will setup the default branch and project, and allows to subsequently run a simpler command:
-```bash
-$ git push
-```
-
-6. So, this is a common workflow:
-```bash
-$ cd <path to labs>
-$ git add .
-$ git commit -m "Message"
-$ git push origin main
-```
-
-**Note:** The Visual Studio Code setup contains actions under the Task Explorer (see above section). One of the commands is *git/pull* which pulls the most recent changes from the Github, and *git/push* which updates the Github with your changes. In this way, there is no need to know all above git commands as this flow is automated via "*.vscode*." 
+4. *git/pull*: pulls the most recent changed from Github. **NOTE**: Choose your branch!
+5. *git/push*: updates Github with your changes, and prompts the commit comment. **NOTE**: Write the comment in the prompt! Choose your branch!
 
 ## References
 

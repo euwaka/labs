@@ -44,8 +44,8 @@
 	{
 	    "label": "git/pull",
 	    "type": "shell",
-	    "command": "git pull origin electromagnetism",
-	    "detail": "Pull the most recent changes from Github",
+	    "command": "git pull origin ${input:branchChoice}",
+	    "detail": "Pull the most recent changes from the selected branch.",
 	    "group": "none",
 	    "problemMatcher": []
 	},
@@ -53,17 +53,24 @@
 	{
 	    "label": "git/push",
 	    "type": "shell",
-	    "command": "git add . && git commit -m \"${input:commitMessage}\" && git push origin electromagnetism",
-	    "detail": "Update Github with your changes",
+	    "command": "git add . && git commit -m \"${input:commitMessage}\" && git push origin ${input:branchChoice}",
+	    "detail": "Update Github with your changes in the selected branch",
 	    "group": "none",
 	    "problemMatcher": []
 	},
     ],
     "inputs": [
-	    {
-		"id": "commitMessage",
-		"type": "promptString",
-		"description": "Enter commit message"
-	    },
+	{
+	    "id": "commitMessage",
+	    "type": "promptString",
+	    "description": "Enter commit message"
+	},
+	{
+	    "id": "branchChoice",
+	    "type": "pickString",
+	    "description": "Select the branch to work on",
+	    "options": ["electromagnetism"],
+	    "default": "electromagnetism"
+	}
     ],
 }
