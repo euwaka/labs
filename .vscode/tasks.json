@@ -2,34 +2,18 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "oscillations",
+            "label": "capacitors",
             "type": "shell",
-            "command": "make MODE=latex NAME=oscillations",
-            "detail": "Build LaTeX for oscillations",
+            "command": "make MODE=latex NAME=capacitors",
+            "detail": "Build LaTeX for capacitors",
             "group": "build",
             "problemMatcher": []
         },
         {
-            "label": "oscillations/scripts",
+            "label": "capacitors/scripts",
             "type": "shell",
-            "command": "make MODE=scripts NAME=oscillations",
-            "detail": "Run the scripts for oscillations",
-            "group": "none",
-            "problemMatcher": []
-        },
-        {
-            "label": "gyroscope",
-            "type": "shell",
-            "command": "make MODE=latex NAME=gyroscope",
-            "detail": "Build LaTeX for gyroscope",
-            "group": "build",
-            "problemMatcher": []
-        },
-        {
-            "label": "gyroscope/scripts",
-            "type": "shell",
-            "command": "make MODE=scripts NAME=gyroscope",
-            "detail": "Run the scripts for gyroscope",
+            "command": "make MODE=scripts NAME=capacitors",
+            "detail": "Run the scripts for capacitors",
             "group": "none",
             "problemMatcher": []
         },
