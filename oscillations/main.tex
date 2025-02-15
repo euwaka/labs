@@ -1,0 +1,60 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{titling}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[margin=0.8in]{geometry}
+\usepackage[utf8]{inputenc}
+
+% Title information
+\title{Oscillations}
+\author{Artur Topal (S5942128), Tyn Rendering (S6106366)}
+\date{11 December 2024}
+
+\begin{document}
+
+\begin{titlingpage}
+  \centering
+  \maketitle
+  \vspace{2cm}
+  \begin{abstract}
+  \textit{This experiment answers the question: What is the relation between the damping factor and the resonance frequency in a damped driven oscillator system? The natural frequency of an undamped oscillator is measured, damping is introduced by a magnet and a driving force is supplied by a rotary motor. The amplitude and phase are recorded at different driving frequencies and used to construct amplitude-frequency and phase-frequency graphs. The hypothesis that is tested is the relation between the damping factor and resonance frequency $\omega_{res} = \sqrt{\omega^2 - 2\gamma^2}$.}
+\end{abstract}
+
+\end{titlingpage}
+
+\break
+\tableofcontents
+\break
+\section{Introduction}
+\input{oscillations/sections/introduction}
+
+\section{Theory}\label{sec:theory}
+\input{oscillations/sections/theory}
+
+\section{Methods}
+\input{oscillations/sections/setup}
+
+\section{Results}
+\input{oscillations/sections/results}
+
+\section{Discussion}
+\input{oscillations/sections/discussion}
+
+\section{Conclusions}
+\input{oscillations/sections/conclusions}
+
+\appendix
+\section{Preparatory Exercises}\label{appendix:preps}
+\input{oscillations/sections/prep_answers}
+ 
+\section{Tabular Data}\label{appendix:data}
+\input{oscillations/sections/data}
+
+\section{Errors}\label{appendix:errors}
+\input{oscillations/sections/errors}
+
+\end{document}

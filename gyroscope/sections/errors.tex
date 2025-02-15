@@ -1,0 +1,66 @@
+{\color{gray}\hrule}
+\begin{center}
+\section{Error Analysis} \label{appendix:errors}
+\bigskip
+\end{center}
+{\color{gray}\hrule}
+
+\begin{multicols}{2}
+\subsection{Precession Frequency}
+\label{appendix:errors:precession_frequency}
+
+In table \ref{tab:results:precession} and figure \ref{fig:results:processed_precession}, there two types of precession frequency measurement, \emph{Type I} and \emph{Type II}. Their errors were estimated in two different ways.
+
+For \emph{Type I} measurement, standard error was estimated from measurement's time distribution.
+\begin{equation*}
+  \Delta\Omega = \frac{\sigma_{\Omega}}{\sqrt{N}} = \frac{1}{N}\sqrt{\sum\limits_{i=1}^N(\Omega - \left<\Omega\right>)^2}
+\end{equation*}
+where $N$ is a number of samples in a measurement and $\left< \Omega \right>$ is the mean (effective) precession frequency. This error is depicted in figure \ref{fig:appendix:raw_precession_data}, and in figure \ref{fig:results:processed_precession} and table \ref{tab:results:precession} for \emph{Type I} points.
+
+For \emph{Type II} measurement, the mean and the mean squared error of two points (see figure \ref{fig:appendix:raw_precession_data}) were taken. For instance, for point $\#1 (4/5)$ the following equations were used:
+\begin{equation*}
+  \Omega \equiv \Omega_{\#1} = \frac{\left< \Omega_{4} \right> + \left< \Omega_{5} \right>}{2}
+\end{equation*}
+\begin{equation*}
+  \Delta\Omega \equiv \Delta\Omega_{\#1} = \frac{\sqrt{(\left< \Omega_{4} \right> - \Omega_{\#1})^{2} + (\left< \Omega_{5} \right> - \Omega_{\#1})^{2}}}{2}
+\end{equation*}
+
+Plugging in the values for point $\#1 (4/5)$ from figure \ref{fig:appendix:raw_precession_data} gives:
+\begin{equation*}
+  \Omega \equiv \Omega_{\#1} = \frac{0.494178 + 0.405244}{2} = 0.449711
+\end{equation*}
+\begin{equation*}
+  \Delta\Omega = \frac{\sqrt{(0.494178 - 0.449711)^{2} + (0.405244 - 0.449711)^{2}}}{2}
+\end{equation*}
+\begin{equation*}
+  \Rightarrow \Delta \Omega = \Delta \Omega_{\#1} = 0.031443
+\end{equation*}
+
+Errors, calculated in this way, are shown in figure \ref{fig:results:processed_precession} and table \ref{tab:results:precession} for \emph{Type II} points.
+
+\subsection{Precession period}
+  In this case, $T_{p, \text{calculated}} \propto \Delta M, \Delta l, \Delta I_3, \Delta T_3$. The uncertainties in M and l are given by equations \ref{eq:results:weight_err} and \ref{eq:results:l_err}, respectively. The moment of inertia, $\Delta I_3 \propto \Delta M_d, \Delta R_d$. The value of $M_d$ is given, and therefore assumed to be a constant with no uncertainty. The uncertainty in $R_d$ is given by:
+\begin{equation*}
+    \Delta R_d = \frac{\Delta r}{\sqrt{N}}
+\end{equation*}
+Where $\Delta r$ is the uncertainty in the ruler, which is 0.1 centimeters. The error in $I_3$ gets propagated as:
+\begin{equation*}
+  \Delta I_3 = 2M_d \frac{\Delta R_d}{R_d}I_3
+\end{equation*}
+
+For $\Delta T_3$, the error was calculated using:
+\begin{equation*}
+  \Delta T_3 = \sqrt{\frac{1}{N-1} \sum_{i=1}^N (T_{3, i} - \left< T_{3, i} \right> )^2}
+\end{equation*}
+
+These uncertainties combine to form the equation for $T_{p_{c}} = T_{p, \text{calculated}}$:
+\begin{equation*}
+  \Delta T_{p_{c}} = T_p \sqrt{\left(\frac{\Delta I_3}{I_3}\right)^2 + \left(\frac{\Delta M}{M}\right)^2 + \left(\frac{\Delta l}{l}\right)^2 + \left(\frac{\Delta T_3}{T_3}\right)^2}
+\end{equation*}
+
+The only variable $T_{p, \text{measured}}$ is based on is $\Omega$, so $\Delta T_{p, \text{measured}}$ was obtained by taking the derivative of $T_{p, \text{measured}}$ with respect to $\Omega$. Thus,
+\begin{equation*}
+  \Delta T_{p, \text{measured}} = \frac{2\pi}{\Omega^2}\Delta \Omega
+\end{equation*}
+
+\end{multicols}

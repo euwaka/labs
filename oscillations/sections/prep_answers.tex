@@ -1,0 +1,33 @@
+\subsection{Question 1}
+
+A change in $\gamma$ will cause a change in amplitude and a shift in resonance frequency. When $\gamma$ increases, the amplitude will decrease, because the amplitude is inversely proportional to $\gamma$ (see Eq.~\eqref{eq:full_motion_ampl}). The peak will be shifted to the left, since an increase in $\gamma$ causes a decrease in $\omega_{\text{res}}$, as seen in Eq.~\eqref{eq:freq_deps}. A decrease in $\gamma$ will have an inverse effect, the amplitude will increase and the peak will shift to the right.
+
+\subsection{Question 2}
+The amplitude was given by Eq.~\eqref{eq:full_motion_ampl}. The resonance frequency occurs when the amplitude A is maximized, this occurs when the denominator in Eq.~\eqref{eq:full_motion_ampl} is minimized. For this we take the derivative of the denominator with respect to $\omega_d$ and set it to zero. The resonance frequency is then determined to be: 
+\begin{equation} \label{eq:freq_deps}
+        \omega_{\text{res}} = \sqrt{\omega^2 - 2\gamma^2}
+\end{equation}
+From this follows that $\omega_{\text{res}} = \omega$ when $\gamma = 0$, this occurs when no damping is taking place.
+
+\subsection{Question 3}
+Note, that $\phi$ in Eq.~\eqref{eq:full_motion_phase} can be re-written as follows:
+\begin{equation*}
+        \phi = \arctan(\frac{2\gamma\omega_d}{\omega^2 - \omega_d^2}) = \arctan(\gamma ( \frac{1}{\omega-\omega_d} - \frac{1}{\omega+\omega_d} ))
+\end{equation*}
+Then, taking both half-limits of $\phi$ as $\omega_d \rightarrow \omega$ gives discontinuity \footnote{$arctan(\theta)$ is continuous on $(-\frac{\pi}{2};\frac{\pi}{2})$, so the limit operator can be brought inside $arctan(\theta)$.}:
+\begin{equation*}
+        \arctan \lim_{\omega_d \rightarrow \omega^+} {\gamma ( \frac{1}{\omega-\omega_d} - \frac{1}{\omega+\omega_d} )} \asymp \arctan( -\infty) = -\frac{\pi}{2}
+\end{equation*}
+
+\begin{equation*}
+        \arctan \lim_{\omega_d \rightarrow \omega^-} {\gamma ( \frac{1}{\omega-\omega_d} - \frac{1}{\omega+\omega_d} )} \asymp \arctan(\infty) = \frac{\pi}{2}
+\end{equation*}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{oscillations/images/prep_exercise_Q3}
+  \caption{Plots of the phase $\phi$ for different values of the damping factor $\gamma$ and natural frequency $\omega$.} 
+  \label{fig:prep:phase}
+\end{figure}
+
+In Fig.~\ref{fig:prep:phase}, this discontinuity is clear for different initial conditions ($\gamma$ and $\omega$). If the driving frequency $\omega_d$ approaches natural frequency $\omega$ from the negative side, the phase $\phi$ approaches $\pi/2$ radians. In other words, the driving force becomes more out of phase with the natural oscillations. Identical reasoning applies to the positive half limit.

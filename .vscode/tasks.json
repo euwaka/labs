@@ -44,7 +44,7 @@
 	{
 	    "label": "git/pull",
 	    "type": "shell",
-	    "command": "git pull",
+	    "command": "git pull origin electromagnetism",
 	    "detail": "Pull the most recent changes from Github",
 	    "group": "none",
 	    "problemMatcher": []
@@ -53,7 +53,7 @@
 	{
 	    "label": "git/push",
 	    "type": "shell",
-	    "command": "git add . && git commit -m \"${input:commitMessage}\" && git push origin main",
+	    "command": "git add . && git commit -m \"${input:commitMessage}\" && git push origin electromagnetism",
 	    "detail": "Update Github with your changes",
 	    "group": "none",
 	    "problemMatcher": []

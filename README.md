@@ -9,7 +9,7 @@
 - [Usage](#usage)
   - [Project Structure](#project-structure)
 - [Actions](#actions-under-task-explorer)
-- [Short Manual](#short-manual)
+- [DEPRECATED Short Manual](#deprecated-short-manual)
 - [References](#references)
 
 # TODO
@@ -76,7 +76,7 @@ Step 5 is tedious but crucial. This is like auth for git remote repositories. Yo
 
 ![Visual Studio Code Setup](meta/vscode.png)
 
-1. Download the archive with the project [here](https://github.com/euwaka/labs).
+1. Download the archive with the project [here](https://github.com/euwaka/labs/tree/electromagnetism).
 2. Unzip it.
 3. Open it in Visual Studio Code. You can configure Visual Studio Code to your liking (an example is shown on the image above).
 4. If extensions were not installed automatically, manually install:
@@ -120,7 +120,9 @@ The only actions that can be clicked are located under the *vscode* label. Other
 4. *git/pull*: pulls the most recent changed from Github.
 5. *git/push*: updates Github with your changes, and prompts the commit comment.
 
-# Short manual
+# DEPRECATED Short manual
+
+This section is deprecated as everything is automated in Visual Studio Code.
 
 ## Git
 
@@ -170,7 +172,7 @@ $ git push
 
 6. So, this is a common workflow:
 ```bash
-$ cd <path to Machine-Lab>
+$ cd <path to labs>
 $ git add .
 $ git commit -m "Message"
 $ git push origin main

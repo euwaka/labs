@@ -1,0 +1,841 @@
+\documentclass{article}
+
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mhchem}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+
+\usepackage[backend=biber, style=alphabetic, sorting=ynt]{biblatex}
+
+% for augmented matrices
+\newenvironment{amatrix}[1]{\left(\begin{array}{@{}*{#1}{c}|c@{}}}{\end{array}\right)}
+
+\title{Week 2 - Homework 1}
+\author{Artur Topal, S5942128}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+  \textbf{TA}: Teodora Neaga, group 4
+\end{center}
+
+\pagebreak
+
+\section{ Problem 1 } 
+
+The augmented matrix for the system is $\begin{amatrix}{2} 2 & 1 & 7 \\  1 & -3 & -8 \end{amatrix}$. Put it in the RREF\footnote{Reduced row echelon form.}.
+
+\begin{equation*}
+  \begin{amatrix}{2} 2 & 1 & 7 \\  1 & -3 & -8 \end{amatrix} =
+  \begin{amatrix}{2} 1 & -3 & -8 \\  2 & 1 & 7 \end{amatrix} =
+  \begin{amatrix}{2} 1 & -3 & -8 \\  2 - 2 \cdot 1 & 1 - 2 \cdot (-3) & 7 - 2 \cdot (-8) \end{amatrix} =
+  \begin{amatrix}{2} 1 & -3 & -8 \\  0 & 7 & 23 \end{amatrix} =
+  \begin{amatrix}{2} 1 & -3 & -8 \\  0 & 1 & \frac{23}{7} \end{amatrix} = 
+\end{equation*}
+\begin{equation*}
+  \begin{amatrix}{2} 1 & -3 + 3 \cdot 1 & -8 + 3 \cdot \frac{23}{7} \\  0 & 1 & \frac{23}{7} \end{amatrix} =
+  \begin{amatrix}{2} 1 & 0 & \frac{13}{7} \\ 0 & 1 & \frac{23}{7} \end{amatrix}
+\end{equation*}
+
+Therefore, $x_{1} = \frac{13}{7}$ and $x_{2} = \frac{23}{7}$.
+
+\section{ Problem 2 }
+
+The same as in Problem 1.
+
+\begin{equation*}
+  \begin{amatrix}{3}
+    2 & 3 & 1 & 10 \\
+    4 & -1 & 5 & 5 \\
+    1 & 2 & -3 & -4
+  \end{amatrix} =
+  \begin{amatrix}{3}
+    1 & 2 & -3 & -4 \\
+    4 - 4 \cdot 1 & -1 - 4 \cdot 2 & 5 - 4 \cdot (-3) & 5 - 4 \cdot (-4) \\
+    2 - 2 \cdot 1 & 3 - 2 \cdot 2 & 1 - 2 \cdot (-3) & 10 - 2 \cdot (-4)
+  \end{amatrix} =
+  \begin{amatrix}{3}
+    1 & 2 & -3 & -4 \\
+    0 & -9 & 17 & 21 \\
+    0 & -1 & 7 & 18
+  \end{amatrix} = 
+\end{equation*}
+\begin{equation*}
+  \begin{amatrix}{3}
+    1 & 2 & -3 & -4 \\
+    0 & 1 & -7 & -18 \\
+    0 & -9 & 17 & 21
+  \end{amatrix} =
+  \begin{amatrix}{3}
+    1 & 2 & -3 & -4 \\
+    0 & 1 & -7 & -18 \\
+    0 & -9 + 9 \cdot 1 & 17 + 9 \cdot (-7) & 21 + 9 \cdot (-18)
+  \end{amatrix} =
+  \begin{amatrix}{3}
+    1 & 2 & -3 & -4 \\
+    0 & 1 & -7 & -18 \\
+    0 & 0 & -46 & -141
+  \end{amatrix} =
+\end{equation*}
+\begin{equation*}
+  \begin{amatrix}{3}
+    1 & 2 & -3 & -4 \\
+    0 & 1 & -7 & -18 \\
+    0 & 0 & 1 & \frac{141}{46}
+  \end{amatrix} =
+  \begin{amatrix}{3}
+    1 & 2 & -3 + 3 \cdot 1 & -4 + 3 \cdot \frac{141}{46} \\
+    0 & 1 & -7 + 7 \cdot 1 & -18 + 7 \cdot \frac{141}{46} \\
+    0 & 0 & 1 & \frac{141}{46}
+  \end{amatrix} =
+  \begin{amatrix}{3}
+    1 & 2 & 0 & \frac{239}{46} \\
+    0 & 1 & 0 & \frac{159}{46} \\
+    0 & 0 & 1 & \frac{141}{46}
+  \end{amatrix} =
+  \begin{amatrix}{3}
+    1 & 2 - 2 \cdot 1 & 0 & \frac{239}{46} - 2 \cdot \frac{159}{46} \\
+    0 & 1 & 0 & \frac{159}{46} \\
+    0 & 0 & 1 & \frac{141}{46}
+  \end{amatrix} =
+\end{equation*}
+\begin{equation*}
+  \begin{amatrix}{3}
+    1 & 0 & 0 & -\frac{79}{46} \\
+    0 & 1 & 0 & \frac{159}{46} \\
+    0 & 0 & 1 & \frac{141}{46}
+  \end{amatrix}
+\end{equation*}
+
+Therefore, $x_{1} = -\frac{79}{46}$, $x_{2} = \frac{159}{46}$, and $x_{3} = \frac{141}{46}$.
+
+\section{Problem 3}
+
+First, reduce the augmented matrix.
+
+\begin{equation*}
+  \begin{amatrix}{3}
+    -3 & 1 & -1 & b \\
+    -2 & 4 & a  & 3 \\
+    2 & 1 & 2 & 3
+  \end{amatrix} = 
+  \begin{amatrix}{3}
+    -1 & 2 & 1 & b + 3 \\
+    0 & 5 & a + 2  & 6 \\
+     2 & 1 & 2  & 3
+   \end{amatrix} =
+   \begin{amatrix}{3}
+    1 & -2 & -1 & -b-3 \\
+    1 & \frac{1}{2} & 1  & \frac{3}{2} \\
+    0 & 5 & a + 2  & 6
+  \end{amatrix} =
+  \begin{amatrix}{3}
+    1 & -2 & -1 & -b-3 \\
+    0 & \frac{5}{2} & 2  & b + \frac{9}{2} \\
+    0 & 5 & a + 2  & 6
+  \end{amatrix} =
+\end{equation*}
+
+\begin{equation*}
+  \begin{amatrix}{3}
+    1 & -2 & -1 & -b-3 \\
+    0 & 1 & \frac{a+2}{5}  & \frac{6}{5} \\
+    0 & \frac{5}{2} & 2  & b + \frac{9}{2}
+  \end{amatrix} =
+  \begin{amatrix}{3}
+    1 & -2 & -1 & -b-3 \\
+    0 & 1 & \frac{a+2}{5}  & \frac{6}{5} \\
+    0 & 0 & \frac{2-a}{2}& b + \frac{3}{2}
+  \end{amatrix} =
+  \begin{amatrix}{3}
+    1 & -2 & -1 & -b-3 \\
+    0 & 1 & \frac{4}{5}  & \frac{6}{5} + \frac{2}{5} \cdot (b + \frac{3}{2}) \\
+    0 & 0 & \frac{2-a}{2}& b + \frac{3}{2}
+  \end{amatrix} =
+\end{equation*}
+\begin{equation*}
+  \begin{amatrix}{3}
+    1 & -2 & -1 & -b-3 \\
+    0 & 1 & \frac{4}{5}  & \frac{2b + 9}{5} \\
+    0 & 0 & \frac{2-a}{2}& b + \frac{3}{2}
+  \end{amatrix} = 
+  \begin{amatrix}{3}
+    1 & -2 & -1 & -b-3 \\
+    0 & 1 & \frac{4}{5}  & \frac{2b + 9}{5} \\
+    0 & 0 & a - 2& - 2b - 3
+  \end{amatrix}
+\end{equation*}
+
+If $a \ne 2$, then $x_{3}$ is uniquely determined by $\frac{-2b-3}{a - 2}$. Therefore, the system has exactly one solution.
+
+Now, assume $a = 2$. Then, the third row suggests $0x_{3} = -2b - 3$. If $-2b - 3 \ne 0$ (so, $b \ne -\frac{3}{2}$), then $0x_{3} \ne 0$ which is a contradiction. Otherwise, if $b = -\frac{3}{2}$, then $0x_{3} = 0$ which is correct for $\forall x_{3} \in \mathbb{R}$ making $x_{3}$ a free variable. So, the system has infinite number of solutions.
+
+To summarize:
+
+a. $a \in \mathbb{R} \setminus \{ 2 \} \land b \in \mathbb{R}$, then \textbf{1} solution.
+
+b. $a = 2 \land b = -\frac{3}{2}$, then \textbf{infinite} solutions.
+
+c. $a = 2 \land b \in \mathbb{R} \setminus \{ -\frac{3}{2} \}$, then \textbf{no} solutions.
+
+\section {Problem 4} \textbf{a.} Row-reduce the matrix.
+
+\begin{equation*}
+  \begin{amatrix}{3}
+    2 & 1 & 5 & 10 \\
+    1 & -3 & -1 & -2 \\
+    4 & -2 & 6 & 12
+  \end{amatrix} =
+  \begin{amatrix}{3}
+    1 & -3 & -1 & -2 \\
+    2 & 1 & 5 & 10 \\
+    4 & -2 & 6 & 12
+  \end{amatrix}
+  \xrightarrow{(R_{3} \leftarrow R_{3} - 2R_{2})}
+  \begin{amatrix}{3}
+    1 & -3 & -1 & -2 \\
+    2 & 1 & 5 & 10 \\
+    0 & -4 & -4 & -8
+  \end{amatrix}
+  \xrightarrow{(R_{3} \leftarrow R_{3} / (-4)) \land (R_{2} \leftarrow R_{2} - 2R_{1})}
+\end{equation*}
+\begin{equation*} 
+  \begin{amatrix}{3}
+    1 & -3 & -1 & -2 \\
+    0 & 7 & 7 & 14 \\
+    0 & 1 & 1 & 2
+  \end{amatrix}
+  \xrightarrow{(R_{2} \leftarrow R_{2} / 7)}
+  \begin{amatrix}{3}
+    1 & -3 & -1 & -2 \\
+    0 & 1 & 1 & 2 \\
+    0 & 1 & 1 & 2
+  \end{amatrix}
+  \xrightarrow{(R_{1} \leftarrow R_{1} + 3R_{2})}
+  \begin{amatrix}{3}
+    1 & 0 & 2 & 4 \\
+    0 & 1 & 1 & 2 \\
+    0 & 1 & 1 & 2
+  \end{amatrix} =
+   \begin{amatrix}{3}
+    1 & 0 & 2 & 4 \\
+    0 & 1 & 1 & 2 \\
+    0 & 0 & 0 & 0
+  \end{amatrix}
+\end{equation*}
+
+The reduced matrix is $\begin{amatrix}{3}
+    1 & 0 & 2 & 4 \\
+    0 & 1 & 1 & 2 \\
+    0 & 0 & 0 & 0
+  \end{amatrix}$.
+
+\textbf{b.} Given matrix:
+
+\begin{equation*}
+  \begin{cases}
+    2x_{1} + x_{2} + 5x_{3} = 10 \\
+    x_{1} -3x_{2} - x_{3} = -2 \\
+    4x_{1} - 2x_{2} + 6x_{3} = 12
+  \end{cases}
+\end{equation*}
+
+Row-reduced matrix:
+\begin{equation*}
+  \begin{cases}
+    x_{1} + 2x_{3} = 4 \\
+    x_{2} + x_{3} = 2
+  \end{cases}
+\end{equation*}
+
+\textbf{c} $x_{3} := \alpha$ is a free variable. The solution is readily visible from the system of equations: $x_{1} = 4 - 2\alpha$, $x_{2} = 2 - \alpha$, and $\alpha \in \mathbb{R}$.
+
+\section{Problem 5}
+
+\begin{equation*}
+  \begin{amatrix}{4}
+    1 & 4 & 3 & -1 & 5 \\
+    1 & -2 & 1 & 2 & 6 \\
+    4 & 1 & 6 & 5 & 9
+  \end{amatrix}
+  \xrightarrow{(R_{3} \leftarrow R_{3} - 4R_{1} ) \land ( R_{2} \leftarrow R_{2} - R_{1} )}  
+  \begin{amatrix}{4}
+    1 & 4 & 3 & -1 & 5 \\
+    0 & -6 & -2 & 3 & 1 \\
+    0 & -15 & -6 & 9 & -11
+  \end{amatrix}
+  \xrightarrow{( R_{2} \leftarrow R_{2} / (-6) )}
+\end{equation*}
+\begin{equation*}
+  \begin{amatrix}{4}
+    1 & 4 & 3 & -1 & 5 \\
+    0 & 1 & 1/3 & -1/2 & -1/6 \\
+    0 & -15 & -6 & 9 & -11
+  \end{amatrix}
+  \xrightarrow{( R_{3} \leftarrow (-1) \cdot (R_{3} + 15R_{2}) )}
+  \begin{amatrix}{4}
+    1 & 4 & 3 & -1 & 5 \\
+    0 & 1 & 1/3 & -1/2 & -1/6 \\
+    0 & 0 & 1  & -3/2 & 27/2
+  \end{amatrix}
+\end{equation*}
+
+$x_{4} := \alpha \in \mathbb{R}$ is a free variable. Therefore, $x_{3} = \frac{27}{2} + \frac{3}{2}\alpha$. Substituting $x_{3}$ and $x_{4}$ into the second row, we get $x_{2} = -\frac{1}{6} + \frac{\alpha}{2} - \frac{1}{3} x_{3} = -\frac{1}{6} + \frac{\alpha}{2} - \frac{1}{3} (\frac{27}{2} + \frac{3}{2}\alpha) = -\frac{1}{6} + \frac{\alpha}{2} - \frac{9}{2} - \frac{\alpha}{2} = -\frac{28}{6} = -\frac{14}{3}$. Now, substitute $x_{2}, x_{3}, x_{4}$ into the first row. We obtain: $x_{1} = 5 + x_{4} - 3x_{3} - 4x_{2} = 5 + \alpha - 3 \cdot ( \frac{27}{2} + \frac{3}{2}\alpha) - 4 \cdot \left( \frac{-14}{3} \right) = -\frac{101 + 21\alpha}{6}$
+
+Therefore, the solution is
+
+$x_{4} := \alpha \in \mathbb{R}$ (free variable)
+
+$x_{3} := 13.5 + 1.5\alpha$
+
+$x_{2} := -14/3$ (fixed variable)
+
+$x_{1} := -\frac{101 + 21\alpha}{6}$
+
+\section{Problem 6}
+
+\textbf{a.} The matrix, $A$, of the system is given below and its determinant is found by a cofactor expansion along the first row.
+
+\begin{equation*}
+  \begin{vmatrix}
+    -3 & 1 & -1 \\
+    -2 & 4 & a  \\
+    2 & 1 & 2 
+  \end{vmatrix} =
+  -3
+  \begin{vmatrix}
+    4 & a \\
+    1 & 2
+  \end{vmatrix}
+  -\begin{vmatrix}
+    -2 & a \\
+    2 & 2
+  \end{vmatrix}
+  - \begin{vmatrix}
+    -2 & 4 \\
+    2 & 1
+    \end{vmatrix} = -3 \cdot (8 - a) - (-4 - 2a) - (-2 - 8) = -24 + 3a + 4 + 2a + 2 + 8 = 5a - 10
+\end{equation*}
+
+Therefore, $det(A) = 5a - 10$. Consider the system $A\mathbf{x} = \mathbf{b} $, where $\mathbf{b}^{T} = \begin{pmatrix} b & 3 & 3 \end{pmatrix}$. If $det(A) \ne 0$, then A is nonsingular and, thus, its inverse, $A^{-1}$, exists, resulting in $\mathbf{x} = A^{-1}\mathbf{b}$ (in other words, a non-trivial and unique solution). Therefore, the determinant must be nonzero: $5a - 10 \ne 0 \Rightarrow a \ne 2$. This is the same result as obtained in problem 3.
+
+\textbf{b.} Use Guass-Jordan elimination to find the inverse of $A$ for $\forall a \ne 2$.
+
+\begin{equation*}
+  \begin{pmatrix}
+    -3 & 1 & -1 & 1 & 0 & 0 \\
+    -2 & 4 &  a & 0 & 1 & 0 \\
+     2 & 1 &  2 & 0 & 0 & 1 
+   \end{pmatrix}
+   \xrightarrow{(R_{1} \leftarrow (-1) \cdot (R_{1} + R_{3}))}
+  \begin{pmatrix}
+    1 & -2 & -1 & -1 & 0 & -1 \\
+    -2 & 4 &  a & 0 & 1 & 0 \\
+     2 & 1 &  2 & 0 & 0 & 1 
+   \end{pmatrix}
+   \xrightarrow{(R_{3} \leftarrow R_{3} + R_{2})}
+ \end{equation*}
+ 
+\begin{equation*}
+  \begin{pmatrix}
+    1 & -2 & -1 & -1 & 0 & -1 \\
+    -2 & 4 &  a & 0 & 1 & 0 \\
+     0 & 5 &  2 + a & 0 & 1 & 1
+  \end{pmatrix}
+  \xrightarrow{(R_{2} \leftarrow R_{2} + 2R_{1} \land P_{23})}
+  \begin{pmatrix}
+    1 & -2 & -1 & -1 & 0 & -1 \\
+   0 & 5 &  2 + a & 0 & 1 & 1 \\
+    0 & 0 &  a - 2 & -2 & 1 & -2 
+  \end{pmatrix}
+  \xrightarrow{((R_{3} \leftarrow R_{3} / (a-2)) \land (R_{2} \leftarrow R_{2} / 5))}
+\end{equation*}
+
+\begin{equation*}
+  \begin{pmatrix}
+    1 & -2 & -1 & -1 & 0 & -1 \\
+    0 & 1 &  \frac{2 + a}{5} & 0 & 1/5 & 1/5 \\
+    0 & 0 &  1 & \frac{-2}{a-2} & \frac{1}{a-2} & \frac{-2}{a-2} 
+  \end{pmatrix}
+  \xrightarrow{(R_{2} \leftarrow R_{2} - \frac{2+a}{5} R_{3})}
+  \begin{pmatrix}
+    1 & -2 & -1 & -1 & 0 & -1 \\
+    0 & 1 &  0 & \frac{2(2+a)}{5(a-2)} & -\frac{4}{5(a-2)} & \frac{3a+2}{5(a-2)} \\
+    0 & 0 &  1 & \frac{-2}{a-2} & \frac{1}{a-2} & \frac{-2}{a-2} 
+  \end{pmatrix}
+  \xrightarrow{ R_{1} \leftarrow R_{1} + 2R_{2} + R_{3} }
+\end{equation*}
+
+\begin{equation*}
+  \begin{pmatrix}
+    1 & 0 & 0 & \frac{8-a}{5(a-2)} & -\frac{3}{5(a-2)} & \frac{a+4}{5(a-2)}\\
+    0 & 1 &  0 & \frac{2(2+a)}{5(a-2)} & -\frac{4}{5(a-2)} & \frac{3a+2}{5(a-2)} \\
+    0 & 0 &  1 & \frac{-2}{a-2} & \frac{1}{a-2} & \frac{-2}{a-2}
+  \end{pmatrix}
+\end{equation*}
+
+Therefore,
+
+\begin{equation*}
+  A^{-1} = \begin{pmatrix}
+    \frac{8-a}{5(a-2)} & -\frac{3}{5(a-2)} & \frac{a+4}{5(a-2)}\\
+    \frac{2(2+a)}{5(a-2)} & -\frac{4}{5(a-2)} & \frac{3a+2}{5(a-2)} \\
+    \frac{-2}{a-2} & \frac{1}{a-2} & \frac{-2}{a-2}
+  \end{pmatrix}
+   = \frac{1}{5(a-2)} \begin{pmatrix}
+    8-a & -3 & a + 4\\
+    2(2+a) & -4 & 3a+2 \\
+     -10 & 5 & -10
+  \end{pmatrix}
+\end{equation*}
+
+\textbf{c.} The solution to $A\mathbf{x} = \mathbf{b}$ is $\mathbf{x} = A^{-1}\mathbf{b}$.
+
+\begin{equation*}
+  \mathbf{x} = \frac{1}{5(a-2)} \begin{pmatrix}
+    8-a & -3 & a + 4\\
+    2(2+a) & -4 & 3a+2 \\
+     -10 & 5 & -10
+  \end{pmatrix} \begin{pmatrix} b \\ 3 \\ 3  \end{pmatrix} = \frac{1}{5(a-2)}\begin{pmatrix}
+    b(8-a) - 9 + 3(a+4) \\
+    2b(2+a) - 12 + 3(3a+2) \\
+    -10b + 15 - 30
+  \end{pmatrix} =
+\end{equation*}
+
+\begin{equation*}
+   \frac{1}{5(a-2)}
+  \begin{pmatrix}
+    8b - ab - 9 + 3a + 12 \\
+    4b + 2ab - 12 + 9a + 6 \\
+    -10b - 15
+  \end{pmatrix}  =
+  \frac{1}{5(a-2)}
+  \begin{pmatrix}
+    8b - ab + 3a + 3 \\
+    4b + 2ab - 6 + 9a \\
+    -10b - 15
+  \end{pmatrix}
+\end{equation*}
+
+Therefore, the solution is
+
+\begin{equation*}
+  \mathbf{x} =
+  \begin{pmatrix}
+    \frac{8b-ab+3a+3}{5(a-2)} & \frac{4b + 2ab - 6 + 9a}{5(a-2)} & -\frac{2b + 3}{a - 2}
+  \end{pmatrix}^{T}
+\end{equation*}
+
+\section{Problem 7}
+
+\textbf{a.} Partition matrix $A$ in such a way that the off-diagonal components are zero-matrices ($O_{n \times m}$).
+
+\begin{equation*}
+  A = \left(
+  \begin{array}{c|c}
+    A_{2\times2} & O_{2\times3} \\
+    \hline
+    O_{3\times2} & B_{3 \times 3}
+  \end{array}
+  \right)
+\end{equation*},
+
+where $A_{2 \times 2} =
+\begin{pmatrix}
+  1 & 2 \\
+  3 & 5
+\end{pmatrix}
+$ and $B_{3 \times 3} =
+\begin{pmatrix}
+  2 & 0 & 0 \\
+  0 & 7 & 8 \\
+  0 & 5 & 6
+\end{pmatrix}
+$. The transpose of $A$ is:
+
+\begin{equation*}
+  A^{T} = \left(
+  \begin{array}{c|c}
+    A_{2\times2}^{T} & O_{3\times2}^{T} \\
+    \hline
+    O_{2\times3}^{T} & B_{3 \times 3}^{T}
+  \end{array}
+\right) =
+\left(
+  \begin{array}{c|c}
+    A_{2\times2}^{T} & O_{2\times3} \\
+    \hline
+    O_{3\times2} & B_{3 \times 3}^{T}
+  \end{array}
+  \right)
+\end{equation*}
+
+Therefore, the square of $A^{T}$ is:
+
+\begin{equation*}
+  (A^{T})^{2} = \left(
+  \begin{array}{c|c}
+    A_{2\times2}^{T} & O_{2\times3} \\
+    \hline
+    O_{3\times2} & B_{3 \times 3}^{T}
+  \end{array}
+  \right) \left(
+  \begin{array}{c|c}
+    A_{2\times2}^{T} & O_{2\times3} \\
+    \hline
+    O_{3\times2} & B_{3 \times 3}^{T}
+  \end{array}
+\right) = \left(
+  \begin{array}{c|c}
+    (A_{2\times2}^{T})^{2} + O_{2\times3} O_{3\times2} & A_{2\times2}^{T} O_{2 \times 3} + O_{2 \times 3} B_{3\times3}^{T} \\ \hline
+   O_{3\times2} A_{2\times2}^{T} + B_{3\times3}^{T} O_{3\times2} & O_{3\times2} O_{2\times3} + (B_{3\times3}^{T})^{2}
+  \end{array}
+\right)
+\end{equation*}
+
+\begin{equation*}
+  = \left(
+  \begin{array}{c|c}
+    (A_{2\times2}^{T})^{2} + O_{2\times2} & O_{2 \times 3} + O_{2 \times 3} \\ \hline
+   O_{3\times2} + O_{3\times2} & O_{3\times3} + (B_{3\times3}^{T})^{2}
+  \end{array}
+\right) = \left(
+  \begin{array}{c|c}
+    (A_{2\times2}^{T})^{2} & O_{2 \times 3} \\ \hline
+   O_{3\times2} & (B_{3\times3}^{T})^{2}
+  \end{array}
+\right)
+\end{equation*}
+
+Now, evaluate each block.
+
+\begin{equation*}
+  (A_{2\times2}^{T})^{2} =
+  \begin{pmatrix}
+    1 & 3 \\
+    2 & 5
+  \end{pmatrix} \begin{pmatrix}
+    1 & 3 \\
+    2 & 5
+  \end{pmatrix} =
+  \begin{pmatrix}
+    7 & 18 \\ 12 & 31
+  \end{pmatrix}
+\end{equation*}
+
+\begin{equation*}
+  (B_{3\times3}^{T})^{2} =
+  \begin{pmatrix}
+    2 & 0 & 0 \\
+    0 & 7 & 5 \\
+    0 & 8 & 6
+  \end{pmatrix} \begin{pmatrix}
+    2 & 0 & 0 \\
+    0 & 7 & 5 \\
+    0 & 8 & 6
+  \end{pmatrix} =
+  \begin{pmatrix}
+    4 & 0 & 0 \\
+    0 & 89 & 46 \\
+    0 & 104 & 52 
+  \end{pmatrix}
+\end{equation*}
+
+Substituting back into $(A^{T})^{2}$, we obtain:
+
+\begin{equation*}
+  (A^{T})^{2} =
+  \begin{pmatrix}
+    7 & 18 & 0 & 0 & 0 \\
+    12 & 31 & 0 & 0 & 0 \\
+    0 & 0 & 4 & 0 & 0 \\
+    0 & 0 & 0 & 89 & 65 \\
+    0 & 0 & 0 & 104 & 76
+  \end{pmatrix}
+\end{equation*}
+
+\textbf{b.} Use the same partitioned $A$, calculate the inverse by using Gauss-Jordan elimination:
+
+\begin{equation*}
+  A = \left(
+  \begin{array}{c|c}
+    A_{2\times2} & O_{2 \times 3} \\ \hline
+    O_{3\times2} & B_{3\times3}
+  \end{array}
+\right)
+\end{equation*}
+
+\begin{equation*}
+  \left(
+    \begin{array}{c|c|c|c}
+      A_{2\times2} & O_{2\times3} & I_{2\times2} & O_{2\times3} \\ \hline
+      O_{3\times2} & B_{3\times3} & O_{3\times2} & I_{3\times3}
+    \end{array}
+  \right)
+  \xrightarrow{(R_{1} \leftarrow A_{2\times2}^{-1} R_{1}) \land (R_{2} \leftarrow B_{3\times3}^{-1}R_{2})}
+    \left(
+    \begin{array}{c|c|c|c}
+      A_{2\times2}^{-1}A_{2\times2} & A_{2\times2}^{-1}O_{2\times3} & A_{2\times2}^{-1}I_{2\times2} & A_{2\times2}^{-1}O_{2\times3} \\ \hline
+      B_{3\times3}^{-1}O_{3\times2} & B_{3\times3}^{-1}B_{3\times3} & B_{3\times3}^{-1}O_{3\times2} & B_{3\times3}^{-1}I_{3\times3}
+    \end{array}
+  \right) = 
+\end{equation*}
+
+\begin{equation*}
+  \left(
+    \begin{array}{c|c|c|c}
+      I_{2\times2} & O_{2\times3} & A_{2\times2}^{-1} & O_{2\times3} \\ \hline
+      O_{3\times2} & I_{3\times3} & O_{3\times2} & B_{3\times3}^{-1}
+    \end{array}
+  \right)
+\end{equation*}
+
+Therefore, $A^{-1} = \left(
+    \begin{array}{c|c}
+      A_{2\times2}^{-1} & O_{2\times3} \\ \hline
+      O_{3\times2} & B_{3\times3}^{-1}
+    \end{array}
+  \right)$, which is expected since partioned matrix $A$ is diagonal. Now, Evaluate each block.
+
+\begin{equation*}
+  A_{2\times2}^{-1}:
+  \begin{pmatrix}
+    1 & 2 & 1 & 0 \\
+    3 & 5 & 0 & 1
+  \end{pmatrix} =
+  \begin{pmatrix}
+    1 & 2 & 1 & 0 \\
+    0 & -1 & -3 & 1
+  \end{pmatrix} = 
+  \begin{pmatrix}
+    1 & 2 & 1 & 0 \\
+    0 & 1 & 3 & -1
+  \end{pmatrix} =
+  \begin{pmatrix}
+    1 & 0 & -5 & 2 \\
+    0 & 1 & 3 & -1
+  \end{pmatrix} \Rightarrow A_{2\times2}^{-1} =
+  \begin{pmatrix}
+    -5 & 2 \\
+    3 & -1
+  \end{pmatrix}
+\end{equation*}
+
+\begin{equation*}
+  B_{3\times3}^{-1}:
+  \begin{pmatrix}
+    2 & 0 & 0 & 1 & 0 & 0 \\
+    0 & 7 & 8 & 0 & 1 & 0 \\
+    0 & 5 & 6 & 0 & 0 & 1
+  \end{pmatrix} =
+  \begin{pmatrix}
+    1 & 0 & 0 & 1/2 & 0 & 0 \\
+    0 & 1 & 1 & 0 & 1/2 & -1/2 \\
+    0 & 5 & 6 & 0 & 0 & 1
+  \end{pmatrix} =
+    \begin{pmatrix}
+    1 & 0 & 0 & 1/2 & 0 & 0 \\
+    0 & 1 & 0 & 0 & 3 & -4 \\
+    0 & 0 & 1 & 0 & -5/2 & 7/2
+    \end{pmatrix}
+  \end{equation*}
+
+  \begin{equation*}
+    \Rightarrow B_{3\times3}^{-1} =
+    \begin{pmatrix}
+      1/2 & 0 & 0 \\
+      0 & 3 & -4 \\
+      0 & -5/2 & 7/2
+    \end{pmatrix}    
+  \end{equation*}
+
+  Therefore,
+
+  \begin{equation*}
+A^{-1} =
+\begin{pmatrix}
+  -5 & 2 & 0 & 0 & 0 \\
+  3 & -1 & 0 & 0 & 0 \\
+  0 & 0 & 1/2 & 0 & 0 \\
+  0 & 0 & 0 & 3 & -4 \\
+  0 & 0 & 0 & -5/2 & 7/2
+\end{pmatrix}
+  \end{equation*}
+
+  \textbf{c.} Calculate the determinant of $A$ using cofactor expansion along the first row. Then, the second and the third cofactors are irrelevant since they are multiplied with $0$'s.
+
+  \begin{equation*}
+    \begin{vmatrix}
+      4 & 0 & 0 & -8 & 6 \\
+      -3 & 1 & -1 & 6 & -2 \\
+      1 & 4 & -4 & -2 & 8 \\
+      3 & -2 & 2 & -6 & 7 \\
+      -2 & 1 & -1 & 4 & -3
+    \end{vmatrix} =
+    4\begin{vmatrix}
+      1 & -1 & 6 & -2 \\
+      4 & -4 & -2 & 8 \\
+      -2 & 2 & -6 & 7 \\
+      1 & -1 & 4 & -3
+    \end{vmatrix}
+    +8\begin{vmatrix}
+      -3 & 1 & -1 & -2 \\
+      1 & 4 & -4 & 8 \\
+      3 & -2 & 2 & 7 \\
+      -2 & 1 & -1 & -3
+    \end{vmatrix}
+    -6 \begin{vmatrix}
+      -3 & 1 & -1 & 6 \\
+      1 & 4 & -4 & -2 \\
+      3 & -2 & 2 & -6 \\
+      -2 & 1 & -1 & 4
+      \end{vmatrix}
+  \end{equation*}
+
+  First, analyze $det(M_{11})$. The first two columns can be all reduced to $\begin{pmatrix} 1 & -1 \end{pmatrix}$ and $\begin{pmatrix} 0 & 0 \end{pmatrix}$. This results in having different equations like $cx_{3} = d$ with different values of $d$ and nonzero values of $c$. This means that the system is inconsistent. Thus, $det(M_{11}) = 0$. In $M_{14}$, the same thing occurs with the second and third columns, so its determinant is also $0$. In $M_{15}$, this occurs with the first and fourth columns, so its determinent is also $0$. Combining all (partial) determinants, we get $det(A) = 0$ meaning that A is singular and, thus, not invertible.
+
+\section{Problem 8}
+
+\textbf{a.} Consider two matrices: $P_{2\times4}$ - prices of products in each shop, and $N_{3\times4}$ - number of products needed by each person. The matrices are:
+
+\begin{equation*}
+  P_{2\times4} = 
+  \left(
+    \begin{array}{c|c c c c}
+      / & C & B_{r} & B_{e} & W \\ \hline
+      S_{1} & 1.50 & 2.00 & 5.00 & 16.00 \\
+      S_{2} & 1.00 & 2.50 & 4.50 & 17.00
+    \end{array}
+  \right) =
+  \begin{pmatrix}
+    \mathbf{p_{S_{1}}} \\
+    \mathbf{p_{S_{2}}}
+  \end{pmatrix}
+\end{equation*}
+
+\begin{equation*}
+  N_{3\times4} =
+  \left(
+    \begin{array}{c|c c c c}
+      / & C & B_{r} & B_{e} & W \\ \hline
+      A & 6 & 5 & 3 & 1 \\
+      D & 3 & 6 & 2 & 2 \\
+      M & 3 & 4 & 3 & 1
+    \end{array}
+  \right) =
+  \begin{pmatrix}
+    \mathbf{n_{A}} \\
+    \mathbf{n_{D}} \\
+    \mathbf{n_{M}}
+  \end{pmatrix}
+\end{equation*}
+
+Then, consider $P_{2\times4}N_{3\times4}^{T} = \begin{pmatrix}
+    \mathbf{p_{S_{1}}} \\
+    \mathbf{p_{S_{2}}}
+  \end{pmatrix} \begin{pmatrix}
+    \mathbf{n_{A}} &
+    \mathbf{n_{D}} &
+    \mathbf{n_{M}}
+  \end{pmatrix} $ =
+  $\begin{pmatrix}
+    \mathbf{p_{S_{1}}} \mathbf{n_{A}}^{T} & \mathbf{p_{S_{1}}} \mathbf{n_{2}}^{T} & \mathbf{p_{S_{1}}} \mathbf{n_{3}}^{T} \\
+    \mathbf{p_{S_{2}}} \mathbf{n_{A}}^{T} & \mathbf{p_{S_{2}}} \mathbf{n_{D}}^{T} & \mathbf{p_{S_{2}}} \mathbf{n_{M}}^{T}
+  \end{pmatrix}$. Each inner\footnote{According to my notation, $\mathbf{p} \mathbf{n}^{T}$ is a row vector times a column vector which is a scalar (inner) product.} product $\mathbf{p_{i}}\mathbf{n_{j}}^{T}$ corresponds to the total price that person $j$ would pay in shop $i$.
+
+\textbf{b.} Multiply the two matrices.
+
+\begin{equation*}
+  S = P_{2\times4}N_{3\times4}^{T} =
+  \begin{pmatrix}
+    1.50 & 2.00 & 5.00 & 16.00 \\
+    1.00 & 2.50 & 4.50 & 17.00
+  \end{pmatrix}
+  \begin{pmatrix}
+    6 & 3 & 3 \\
+    5 & 6 & 4 \\
+    3 & 2 & 3 \\
+    1 & 2 & 1
+  \end{pmatrix} =
+  \begin{pmatrix}
+    50.0 & 58.5 & 43.5 \\
+    49.0 & 61.0 & 43.5  
+  \end{pmatrix}
+\end{equation*}
+
+Therefore,
+
+\begin{equation*}
+  S =
+  \left(
+    \begin{array}{c|c c c}
+      /     & A   & D & M \\ \hline
+      S_{1} & 50.0 & 58.5 & 43.5 \\
+      S_{2} & 49.0 & 61.0 & 43.5
+    \end{array}
+  \right)
+\end{equation*}
+
+represents the prices each person must pay in each shop.
+
+\textbf{c.} For Anya, the best shop is $S_{2}$. For Dario, the best shop is $S_{1}$. For Marianne, the two shops are pricewise equivalent.
+
+\section{Problem 9}
+
+The number of atoms must be conserved on each side of the chemical reaction. Therefore,
+
+\begin{equation*}
+  \begin{cases}
+    \textit{Carbon (C)}:   1a + 0b = 0c + 6d  \Rightarrow 1a + 0b - 0c - 6d = 0 \\
+    \textit{Hydrogen (H)}: 0a + 2b = 0c + 12d \Rightarrow 0a + 2b - 0c - 12d = 0 \\
+    \textit{Oxygen (O)}:   2a + 1b = 2c + 6d \Rightarrow  2a + 1b - 2c - 6d = 0
+  \end{cases}
+\end{equation*}
+
+The augmented matrix corresponding to the linear system above is:
+\begin{equation*}
+  \begin{amatrix}{4}
+    1 & 0 & 0 & -6 & 0\\
+    0 & 2 & 0 & -12 & 0\\
+    2 & 1 & -2 & -6 & 0
+  \end{amatrix}
+\end{equation*}
+
+Solve using elementary row operations:
+
+\begin{equation*}
+  \begin{amatrix}{4}
+    1 & 0 & 0 & -6 & 0\\
+    0 & 2 & 0 & -12 & 0\\
+    2 & 1 & -2 & -6 & 0
+  \end{amatrix} =
+  \begin{amatrix}{4}
+    1 & 0 & 0 & -6 & 0\\
+    0 & 1 & 0 & -6 & 0\\
+    0 & 1 & -2 & 6 & 0
+  \end{amatrix} =
+   \begin{amatrix}{4}
+     1 & 0 & 0 & -6 & 0\\
+     0 & 1 & -2 & 6 & 0 \\
+     0 & 0 & 2 & -12 & 0
+   \end{amatrix} =
+   \begin{amatrix}{4}
+     1 & 0 & 0 & -6 & 0\\
+     0 & 1 & 0 & -6 & 0 \\
+     0 & 0 & 1 & -6 & 0
+   \end{amatrix}
+\end{equation*}
+
+Therefore, $d$ is a free variable and $a = b = c = 6d$. Substitute the numbers back into the chemical reaction and cancel $d$ out because we need the minimum (and integer) number of molecules that take place in the photosynthesis reaction:
+
+Answer: \ce{6CO2 + 6H2O -> 6O2 + C6H12O6}
+
+
+\end{document}

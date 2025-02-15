@@ -1,0 +1,28 @@
+In a closed damped driven oscillatory system, three forces are acting on a point mass: restoring force ($F_{restoring} = -kx$), damping force ($F_{damping} = -b\dot{x}$), and driving force ($F_{driving} = F_0 \cos(\omega_d t)$). By the Second Newton's law, resulting motion is modelled by:
+\begin{equation*}
+    m\ddot{x} + b\dot{x} + kx = F_0 \cos(\omega_d t)
+\end{equation*}
+
+More commonly, this differential equation is written as
+\begin{equation} \label{eq:full_motion}
+    \ddot{x} + 2\gamma \dot{x} + \omega^2 x = \frac{F_0}{m} \cos(\omega_d t)
+\end{equation} where $\gamma = \frac{b}{2m}$ is the damping factor, $\omega = \sqrt{\frac{k}{m}}$ is natural angular frequency of the oscillations.
+
+% refer to Morin for further information
+Depending on the value of $\Omega^2 = \gamma^2 - \omega^2$, there are three cases to consider: \textbf{underdamping}, \textbf{overdamping}, and \textbf{critical damping}. In this experiment, the damping factor was chosen in a way that the oscillatory system is underdamped ($\Omega^2 < 0$). The homogeneous solution to  Eq.~\eqref{eq:full_motion} becomes:
+\begin{equation} \label{eq:underdamped_solution}
+  x(t) = e^{-\gamma t} \cos(\omega t + \phi)
+\end{equation}
+Thus, after long enough time, the initial natural oscillations will die out, and the system will oscillate with some amplitude $A$ at the driving frequency $\omega_d$ but shifted by some phase $\phi$.
+The amplitude can be found to be:
+\begin{equation} \label{eq:full_motion_ampl}
+  A = \frac{ F_d/m  }{ \sqrt{ (\omega^2 - \omega_d^2)^2 + (2\gamma \omega_d)^2 } }
+\end{equation}
+The phase is:
+\begin{equation} \label{eq:full_motion_phase}
+  \tan(\phi) = \frac{2 \gamma \omega_d}{\omega^2 - \omega_d^2}
+\end{equation}
+
+There is one frequency when the amplitude from Eq.~\eqref{eq:full_motion_ampl} is maximized. This particular frequency is called \textbf{resonance frequency} ($\omega_{res}$). The behavior of the damped driven oscillatory system at resonance frequency is further addressed in appendix \ref{appendix:preps}.  
+
+In this experiment, the system is modelled using above equations since the restoring force comes from the springs, driven force is harmonic, and the damping force depends on the change of magnetic flux, which in our case depends on the speed. The only difference is that displacements ($x(t)$) and speeds are angular.  
