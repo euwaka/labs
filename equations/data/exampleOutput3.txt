@@ -1,0 +1,66 @@
+give an equation: 2 x = 1 
+this is an equation in 1 variable of degree 1
+solution: 0.500
+
+give an equation: x + x = 1 
+this is an equation in 1 variable of degree 1
+solution: 0.500
+
+give an equation: x = - x + 1 
+this is an equation in 1 variable of degree 1
+solution: 0.500
+
+give an equation: x - 1 = - x 
+this is an equation in 1 variable of degree 1
+solution: 0.500
+
+give an equation: x ^ 1 + x ^ 1 = 1 
+this is an equation in 1 variable of degree 1
+solution: 0.500
+
+give an equation: x + x ^ 1 = 1 
+this is an equation in 1 variable of degree 1
+solution: 0.500
+
+give an equation: 1000 x = 998 x + 1 
+this is an equation in 1 variable of degree 1
+solution: 0.500
+
+give an equation: 1000000001 x = 999999999 x + 1 
+this is an equation in 1 variable of degree 1
+solution: 0.500
+
+give an equation: x - x + x - x + x = 1 - x + x - x + x - x 
+this is an equation in 1 variable of degree 1
+solution: 0.500
+
+give an equation: 1 x + 2 x - 3 x + 4 x = 5 + 6 - 7 + 8 
+this is an equation in 1 variable of degree 1
+solution: 3.000
+
+give an equation: 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x + 7 x = 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 9 x + 1 
+this is an equation in 1 variable of degree 1
+solution: 0.500
+
+give an equation: 1000 x = 123456789 
+this is an equation in 1 variable of degree 1
+solution: 123456.789
+
+give an equation: 10000 x = 4 
+this is an equation in 1 variable of degree 1
+solution: 0.000
+
+give an equation: 10000 x = 6 
+this is an equation in 1 variable of degree 1
+solution: 0.001
+
+give an equation: 10000 x = - 4 
+this is an equation in 1 variable of degree 1
+solution: 0.000
+
+give an equation: 10000 x = - 6 
+this is an equation in 1 variable of degree 1
+solution: -0.001
+
+give an equation: good bye
+

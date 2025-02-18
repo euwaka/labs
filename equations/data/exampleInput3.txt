@@ -1,0 +1,18 @@
+2x = 1
+x + x = 1
+x = -x + 1
+x-1 = -x
+x^1 + x^1 = 1
+x + x^1 = 1
+1000x = 998x + 1
+1000000001 x = 999999999 x + 1
+x - x + x - x + x = 1 - x + x - x + x - x
+1x + 2x - 3x + 4x = 5 + 6 - 7 + 8
+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x+7x = 9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+9x+1
+1000x = 123456789
+10000x = 4
+10000x = 6
+10000x = -4
+10000x = -6
+!
+

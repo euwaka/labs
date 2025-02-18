@@ -36,7 +36,8 @@ PY  := python3
 BIB := biber
 CC  := gcc
 
-CFLAGS := -g -O2 -std=c99 -pedantic -Wall -Wno-unused-result -lm
+CFLAGS := -g -O2 -std=c99 -pedantic -Wall -Wno-unused-result 
+CLIBS  := -lm
 
 # ===================================================================
 # Define OS-dependent variables and functions.
@@ -111,7 +112,7 @@ c:
 ifeq ($(SUBMODE), build)
 > @echo "Building C source files for $(NAME)..."
 > $(call make-directory, build/$(NAME)/)
-> @$(CC) $(CFLAGS) $(wildcard $(NAME)/src/*.c) -o build/$(NAME)/$(NAME).o
+> @$(CC) $(CFLAGS) $(wildcard $(NAME)/src/*.c) -o build/$(NAME)/$(NAME).o $(CLIBS)
 
 else ifeq ($(SUBMODE), run)
 > @echo "Running build/$(NAME)/$(NAME).o..."
