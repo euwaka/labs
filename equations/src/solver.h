@@ -92,6 +92,23 @@ eq_t eq_empty();
 term_t* eq_find(eq_t* eq, term_t term);
 
 /*
+ * Returns the pointer to the term if the given term (its identifier, degree, and coefficient ) is present in the equation, and NULL otherwise.
+ * In contrast to eq_find, this function also compares coefficients.
+ */
+term_t* eq_fullfind(eq_t* eq, term_t term);
+
+/*
+ * Returns (extracts) the pointer to the first term found with the given degree. If degree is 0, it returns the pointer to the numeric term.
+ * If no term has been found, it returns NULL.
+ *
+ * NOTE: It is advised to eq_sort/eq_simplify the equation before using eq_extract.
+ */
+term_t* eq_extract(eq_t* eq, size_t degree);
+
+/* Returns the coefficient of the term. If the term is NULL, it returns 0. */
+int eq_coef(const term_t* term);
+
+/*
  * Inserts the term if absent from the equation. Otherwise, it updates the coefficient of the equation's term (effectively simplifying
  * the equation without calling extra eq_simlpify function).
  */
@@ -111,6 +128,9 @@ void eq_sort(eq_t* eq);
 
 /* Removes the term at index. */
 void eq_removeAt(eq_t* eq, size_t idx);
+
+/* Removes the term form the equation. */
+void eq_remove(eq_t* eq, term_t* term);
 
 /*
  * Returns the maximum degree of the identifier in the equation.

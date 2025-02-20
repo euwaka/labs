@@ -100,6 +100,12 @@ term_t* eq_find(eq_t* eq, term_t term) {
     
     for (int i = 0; i < eq->size; ++i) {
 	term_t* current = &eq->terms[i];
+
+	// numeric terms
+	if (current->id == NULL && term.id == NULL && current->degree == term.degree)
+	    return current;
+	
+	// identifier terms
 	if (current->id && term.id && strcmp(current->id, term.id) == 0 && current->degree == term.degree)
 	    return current; 
     }
@@ -107,9 +113,58 @@ term_t* eq_find(eq_t* eq, term_t term) {
     return NULL;
 }
 
+term_t* eq_fullfind(eq_t* eq, term_t term) {
+    if (!eq || !eq->terms) {
+	fprintf(stderr, "ERROR\teq_fullfind\teq or eq->terms is NULL.");
+	abort();
+    }
+    
+    for (int i = 0; i < eq->size; ++i) {
+	term_t* current = &eq->terms[i];
+
+	// numeric terms
+	if (current->id == NULL && term.id == NULL && current->degree == term.degree && current->coef == term.coef)
+	    return current;
+	
+	// identifier terms
+	if (current->id && term.id && strcmp(current->id, term.id) == 0 && current->degree == term.degree && current->coef == term.coef)
+	    return current; 
+    }
+   
+    return NULL;
+}
+
+term_t* eq_extract(eq_t* eq, size_t degree) {
+    if (!eq || !eq->terms) {
+	fprintf(stderr, "ERROR\teq_extract\teq or eq->terms is NULL.\n");
+	abort();
+    }
+
+    for (int i = 0; i < eq->size; ++i) {
+	term_t* term = &eq->terms[i];
+
+	// numeric terms
+	if (degree == 0 && term->id == NULL)
+	    return term;
+	
+	// identifier terms
+	if (term->degree == degree && term->id != NULL)
+	    return term;
+    }
+
+    return NULL;
+}
+
+int eq_coef(const term_t* term) {
+    if (term == NULL)
+	return 0;
+
+    return term->coef;
+}
+
 void eq_add(eq_t* eq, term_t term) {
     if (!eq || !eq->terms) {
-	fprintf(stderr, "ERROR\teq_find\teq or eq->terms is NULL.");
+	fprintf(stderr, "ERROR\teq_find\teq or eq->terms is NULL.\n");
 	abort();
     }
     
@@ -143,8 +198,7 @@ static void _resolveZeros(eq_t* eq) {
 	
 	// remove the term with 0 coefficient
 	if (term->coef == 0) {
-	    size_t idx = term - &eq->terms[0];
-	    eq_removeAt(eq, idx);
+	    eq_remove(eq, term);
 
 	    // since one element was removed, shift the index i
 	    i--;
@@ -164,15 +218,13 @@ static void _resolveZeros(eq_t* eq) {
 		};
 		eq_add(eq, new_numeric_term);
 
-		size_t idx = term - &eq->terms[0];
-		eq_removeAt(eq, idx);
+	        eq_remove(eq, term);
 		i--;
 		continue;
 	    }
 
 	    eq->terms[EQ_NUMERIC_IDX].coef += term->coef;
-	    size_t idx = term - &eq->terms[EQ_NUMERIC_IDX];
-	    eq_removeAt(eq, idx);
+	    eq_remove(eq, term);
 	    i--;
 	    continue;
 	}
@@ -197,9 +249,8 @@ static void _combineTerms(eq_t* eq) {
 	if ( (term->id == NULL && track->id == NULL && term->degree == track->degree)
 	     || (term->id && track->id && strcmp(term->id, track->id) == 0 && term->degree == track->degree) ) {
 	    track->coef += term->coef;
-	    
-	    size_t idx = term - &eq->terms[0];
-	    eq_removeAt(eq, idx);
+
+	    eq_remove(eq, term);
 	    i--;
 	    continue;
 	}
@@ -264,6 +315,18 @@ void eq_removeAt(eq_t* eq, size_t idx) {
     }
 
     eq->size--;
+}
+
+void eq_remove(eq_t* eq, term_t* term) {
+    // check if term is in the equation
+    term_t* found = eq_fullfind(eq, *term);
+    if (found == NULL) {
+	fprintf(stderr, "ERROR\teq_remove\tcannot remove an absent term.\n");
+	abort();
+    }
+
+    size_t idx = found - &eq->terms[0];
+    eq_removeAt(eq, idx);
 }
 
 size_t eq_degree(eq_t* eq, char* id) {
@@ -345,8 +408,13 @@ bool _solveZeroEq(eq_t* eq, sol_t* sol) {
 	abort();
     }
 
-    const int coef = eq->terms[EQ_NUMERIC_IDX].coef;
-    if (coef == 0) {
+    // extract the terms
+    term_t* numeric_term = eq_extract(eq, 0);
+
+    // extract the coefficients
+    int numeric_coef = eq_coef(numeric_term);
+    
+    if (numeric_coef == 0) {
 	// 0 = 0 has infinite solutions
 	sol->inf = true;
 	return true;
@@ -367,34 +435,25 @@ bool _solveLinearEq(eq_t* eq, sol_t* sol) {
 	abort();
     }
 
-    // from kx + b = 0 or kx = 0
-    // eq stores them as [b, kx^1]
-    size_t linear_term_idx;
-    int b, k;
+    // extract the terms
+    term_t* linear_term  = eq_extract(eq, 1);
+    term_t* numeric_term = eq_extract(eq, 0);
 
-    if (eq->size == 2) {
-	linear_term_idx = EQ_NUMERIC_IDX + 1;
-	
-        b = eq->terms[EQ_NUMERIC_IDX].coef;
-        k = eq->terms[linear_term_idx].coef;
-    } else {
-	linear_term_idx = EQ_NUMERIC_IDX;
-	
-	b = 0;
-	k = eq->terms[linear_term_idx].coef; 
-    }
+    // extract the coefficients
+    int linear_coef  = eq_coef(linear_term);
+    int numeric_coef = eq_coef(numeric_term);
     
     // the solution is x = -b / k, k != 0
-    if (k == 0) {
+    if (linear_coef == 0) {
 	// equation has the form 0x + b = 0
-	eq_removeAt(eq, linear_term_idx);
+        eq_remove(eq, linear_term);
 
 	// now, the equation has the form b = 0
 	return _solveZeroEq(eq, sol);
     }
 
-    // otherwise, one unique solution x = -b / k
-    sol_add(sol, -(double)b / k);
+    // otherwise, one unique solution is x = -b / k
+    sol_add(sol, -(double)numeric_coef / linear_coef);
     return true;
 }
 
@@ -409,28 +468,33 @@ bool _solveQuadraticEq(eq_t* eq, sol_t* sol) {
 	abort();
     }
 
-    // from ax^2 + bx + c = 0
-    size_t linear_term_idx    = EQ_NUMERIC_IDX + 1;
-    size_t quadratic_term_idx = EQ_NUMERIC_IDX + 2;
+    // extract the terms
+    term_t* quadratic_term = eq_extract(eq, 2);
+    term_t* linear_term    = eq_extract(eq, 1);
+    term_t* numeric_term   = eq_extract(eq, 0);
 
-    int c = eq->terms[EQ_NUMERIC_IDX].coef;
-    int b = eq->terms[linear_term_idx].coef;
-    int a = eq->terms[quadratic_term_idx].coef;
+    // extract the coefficients
+    int quadratic_coef = eq_coef(quadratic_term);
+    int linear_coef    = eq_coef(linear_term);
+    int numeric_coef   = eq_coef(numeric_term);
 
-    // the discriminant is D = b^2 - 4ac
-    int discriminant = b * b - 4 * a * c;
+    if (quadratic_coef == 0) {
+	eq_remove(eq, quadratic_term);
+	return _solveLinearEq(eq, sol);
+    }
 
+    int discriminant = linear_coef * linear_coef - 4 * quadratic_coef * numeric_coef;
     if (discriminant < 0)
 	return false;
 
-    sol_add(sol, (-b + sqrt(discriminant)) / (2 * a)); // a is not 0 because eq was simplified.
-    sol_add(sol, (-b - sqrt(discriminant)) / (2 * a));
+    sol_add(sol, (-linear_coef + sqrt(discriminant)) / (2 * quadratic_coef));
+    sol_add(sol, (-linear_coef - sqrt(discriminant)) / (2 * quadratic_coef));
 
     return true;
 }
 
 // TODO: for now, it can only solve singlevariable equations and degree <= 2.
-bool sol_solve(eq_t* eq, sol_t* sol) {
+bool sol_solve(eq_t* eq, sol_t* sol) { 
     eq_simplify(eq); // equation is fully simplified and sorted
 
     size_t unique_ids = eq_countUniqueIds(eq);
@@ -666,7 +730,7 @@ void rec_prompt(bool solve) {
 	    size_t unique_ids = eq_countUniqueIds(&eq);
 
 	    // Therefore, output a solution only for SINGLEvariable equations of degree < 2
-	    if (solve && /* these superfluous conditions fulfill the Themis' requirements */ degree < 2 && unique_ids == 1) {
+	    if (solve && /* these superfluous conditions fulfill the Themis' requirements */ degree < 3 && unique_ids == 1) {
 		sol_t sol = sol_empty();
 
 		bool solvable = sol_solve(&eq, &sol);

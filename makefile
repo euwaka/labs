@@ -127,7 +127,7 @@ else
 > @cat $(NAME)/data/exampleInput$(NUMBER).txt | ./build/$(NAME)/$(NAME).o
 endif
 
-else ifeq ($(SUBMODE), debug)
+else ifeq ($(SUBMODE), valgrind)
 ifeq ($(NUMBER), -1)
 > @echo "Debugging build/$(NAME)/$(NAME).o with $(NAME)/data/exampleInput.txt..."
 > @cat $(NAME)/data/exampleInput.txt | valgrind ./build/$(NAME)/$(NAME).o 
@@ -135,6 +135,11 @@ else
 > @echo "Debugging build/$(NAME)/$(NAME).o with $(NAME)/data/exampleInput$(NUMBER).txt..."
 > @cat $(NAME)/data/exampleInput$(NUMBER).txt | valgrind ./build/$(NAME)/$(NAME).o
 endif
+
+else ifeq ($(SUBMODE), debug-build)
+> @echo "Building with build/$(NAME)/$(NAME).o with debug information..."
+> $(call make-directory, build/$(NAME)/)
+> @$(CC) $(CFLAGS) -g $(wildcard $(NAME)/src/*.c) -o build/$(NAME)/$(NAME).o $(CLIBS)
 
 endif
 
