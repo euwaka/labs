@@ -1,0 +1,35 @@
+\documentclass[a4paper,9pt]{article}
+
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[top=0.5in]{geometry}
+\usepackage[backend=biber]{biblatex}
+
+\title{Capacitors}
+\author{Artur Topal (s5942128)}
+\date{\today}
+ 
+\begin{document}
+
+% title page
+\maketitle
+
+\textit{\input{capacitors/sections/abstract.tex}}
+
+\pagebreak
+\tableofcontents
+\pagebreak
+
+\input{capacitors/sections/introduction.tex}
+\input{capacitors/sections/theory.tex}
+\input{capacitors/sections/methods.tex}
+\input{capacitors/sections/results.tex}
+\input{capacitors/sections/discussion.tex}
+\input{capacitors/sections/conclusions.tex}
+\appendix
+\input{capacitors/sections/prep_answers.tex}
+
+\end{document}
