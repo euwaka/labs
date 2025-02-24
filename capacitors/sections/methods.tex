@@ -1,3 +1,47 @@
 \section{Methods}
 
-\lipsum{400}
+\subsection{Equipment and preparations}
+
+1. A \textbf{power supply} capable of giving $1000V$ or $30V$ DC.
+
+2. A \textbf{parallel plate capacitor} with adjustable separation between the plates.
+
+3. An \textbf{electrometer} capable of detecting small currents and measuring voltage in ranges, among others, $100V$ and $30V$. The range is selected with the FUNCTION knob. Besides, it must be discharged set the gauge needle set to $0V$ using the PUSH TO ZERO and/or ZERO LOCK knobs. The electrometer is grounded by connecting its $GND$ wire to the $GND$ pin of the power supply.
+
+4. For grounding, the \textbf{grounding wrist bracelet} is used. It is grounded by connecting the bracelet wire to the $GND$ pin of the power supply.
+
+5. The \textbf{Faraday cage}. It must be grounded by touching the inner and outer cage simultaneously with a grounded object (e.g., a hand with the wrist bracelet), and then releasing the inner cage and thereafter the outer cage.
+
+6. A \textbf{black disk-on-a-rod}. It is further referred to as the rod.
+
+7. A \textbf{conducting sphere} used as a charging station for the rod. It gains its electric potential by connecting it to the $1000V$ pin of the power supply.
+
+\subsection{The capacitor voltage as a function of charge}
+
+The separation of the capacitor is set to $d_{1} = 2 (mm)$. The conducting sphere is charged\footnote{On each iteration, the conducting sphere must be charged again, so that on every touch by the rod it has 1000V, and the rod gains the same charge each time.} to $1000V$ and placed at a distant from the capacitive circuit place. And the capacitor is connected to the electrometer like shown in figure \ref{methods:fig:capacitor_voltage}. The rod is touched to the sphere to gain some charge, and then to the isolated (positive) plate of the capacitor to transfer this charge. The electrometer's measurement is noted. The table of the capacitor voltage as a function of the number of charges is made (12 measurements). Each measurement is sampled twice.  
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{capacitors/img/capacitor_voltage.png}
+  \caption{The circuit for the finding the capacitor voltage as a function of charge}
+  \label{methods:fig:capacitor_voltage}
+\end{figure}
+
+Then, the separation of the capacitor is set to $d_{2} = 4 (mm)$ and the same algorithm is conducted.
+
+\subsection{The distribution of charge on a surface}
+
+The capacitor is connected to the $1000V$ pin of the power supply like shown in figure \ref{methods:fig:distribution}. The electrometer is connected to the inner and outer cages of the Faraday cage. On each charge transfer, the Faraday cage and the rod are discharged. On each iteration, the rod is touched to the positive plate of the capacitor at some position, and the charge of its vicinity will be transferred to the rod. Then, the rod is put inside the Faraday cage, causing the capacitive voltage to appear between the inner and outer cage. This voltage is used as a measure of charge on the rod. This is iterated at different positions along the diameter of the capacitor plate (12 measurements). Each position is sampled twice.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{capacitors/img/distribution.png}
+  \caption{The circuit for the finding the surface charge distribution on the capacitor plate}
+  \label{methods:fig:distribution}
+\end{figure}
+
+The \textit{surface charge density} is obtained from the voltage-position graph.
+
+\subsection{The potential difference as function of the plate distance at constant charge}
+
+The capacitor plate separation is initially set to $d_{1} = 2 (mm)$. The capacitor is charged with the $20V$ output from the power supply, and this charge remains stored in the capacitor after disconnecting the power supply. The electrometer's range is set to $-30V$ to $30V$. The capacitor voltage is measured for different capacitor plate separations from $d_{1} = 2 (mm)$ up to the maximum distance possible (in total 12 measurements). Each measurement is sampled twice.  
