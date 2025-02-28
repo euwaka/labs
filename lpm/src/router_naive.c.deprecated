@@ -1,0 +1,160 @@
+#include "router.h"
+
+#include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+subnet_t r_convertStringSubnet(char *buf, size_t len) {
+    subnet_t subnet = {0};
+
+    // the index telling which part of the IP address (out of 4 parts) is currently
+    // being retrieved.
+    short ip_part_idx = 0; 
+    u8 number = 0;
+    for (size_t i = 0; i < len; ++i) {
+	char symbol = buf[i];
+	
+	if (symbol != '\0' && symbol != '.' && symbol != '/' && !isdigit(symbol)) {
+	    fprintf(stderr, "subnet string contains unknown symbol: %c.\n", symbol);
+	    abort();
+	}
+
+	// examine all possible cases for the current symbol
+	switch (symbol) {
+	case '\0':
+	    subnet.mask = number;
+	    break;
+	case '.':
+	case '/':
+	    subnet.ip[ip_part_idx++] = number;
+	    number = 0;
+	    break;
+	default:
+	    number = number * 10 + (symbol - '0');
+	}
+    }
+   
+    return subnet;
+}
+
+void r_convertStringIPv4(char *buf, size_t len, IPv4_t *ip) {
+    // the index telling which part of the IP address (out of 4 parts) is currently
+    // being retrieved.
+    short ip_part_idx = 0; 
+    u8 number = 0;
+    for (size_t i = 0; i < len; ++i) {
+	char symbol = buf[i];
+	
+	if (symbol != '\0' && symbol != '.' && !isdigit(symbol)) {
+	    fprintf(stderr, "IP string contains unknown symbol: %c.\n", symbol);
+	    abort();
+	}
+
+	// examine all possible cases for the current symbol
+	switch (symbol) {
+	case '.':
+	    (*ip)[ip_part_idx++] = number;
+	    number = 0;
+	    break;
+	case '\0':
+	    (*ip)[ip_part_idx] = number;
+	    break;
+	default:
+	    number = number * 10 + (symbol - '0');
+	}
+    }
+}
+
+void r_printRoutes(const routes_t routes) {
+    printf("ROUTING TABLE\n");
+    for (int i = 0; i < routes.size; ++i) {
+	subnet_t subnet = routes.subnets[i];
+	u8 interface = routes.interfaces[i];
+
+	printf("%d.%d.%d.%d/%d %d\n",
+	       subnet.ip[0],
+	       subnet.ip[1],
+	       subnet.ip[2],
+	       subnet.ip[3],
+	       subnet.mask,
+	       interface
+	    );
+    }
+    printf("\n");
+}
+
+routes_t r_newRoutingTable(unsigned capacity) {
+    subnet_t *subnets = (subnet_t *)malloc(sizeof(subnet_t) * capacity);
+    u8 *interfaces = (u8 *)malloc(sizeof(u8) * capacity);
+    
+    return (routes_t){ subnets, interfaces, capacity, 0 }; 
+}
+
+static void doubleRoutesSize(routes_t *routes) {
+    routes->capacity *= 2;
+    routes->subnets = (subnet_t *)realloc(routes->subnets, sizeof(subnet_t) * routes->capacity);
+    routes->interfaces = (u8 *)realloc(routes->interfaces, sizeof(u8) * routes->capacity);
+}
+
+void r_addRoute(routes_t *routes, subnet_t subnet, u8 interface) {
+    if (routes->size > routes->capacity - 1)
+	doubleRoutesSize(routes);
+
+    routes->subnets[routes->size] = subnet;
+    routes->interfaces[routes->size] = interface;
+    routes->size++;
+}
+
+void r_freeRoutes(routes_t routes) {
+    free(routes.subnets);
+    free(routes.interfaces);
+}
+
+static int _countBitMatches(const IPv4_t dest, const IPv4_t subnet_ip, u8 mask) {
+    int matched_bits = 0;
+
+    for (int j = 0; j < R_NUMBER_OCTETS_IPV4; ++j) {
+	// split the mask into 8-bit groups
+	// last group might be less than 8
+	u8 mask_group = (mask > 8) ? 8 : mask;
+	u8 subnet_ip_octet = subnet_ip[j] & (0xFF << (8 - mask_group));
+	u8 dest_octet      = dest[j] & (0xFF << (8 - mask_group));
+
+	// the default subnet 0.0.0.0/0 will always succeed because
+	// if mask=0, then mask_group = 0
+	//                 subnet_ip_octet = subnet_ip[j] & 00000000 = 0x00
+	//                 dest_octet = 0x00
+	// therefore matched_bits will remain zero, and in r_routeIP,
+	// bit_matches equals 0 which is equal to default subnet mask (0)
+	// and the initial value for the largest_matched_subnet_mask is -1,
+	// therefore largest_matched_subnet_mask becomes 0 and
+	// route_index = default subnet index
+	
+	// octet mismatch in the network part
+	if (subnet_ip_octet != dest_octet)
+	    break;
+
+	matched_bits += mask_group;
+	mask -= mask_group;
+    }
+
+    return matched_bits;
+}
+
+u8 r_routeIP(const routes_t routes, const IPv4_t dest) {
+    int route_index = -1;
+    int largest_matched_subnet_mask = -1;
+    
+    for (int i = 0; i < routes.size; ++i) {
+	const subnet_t subnet = routes.subnets[i];
+	int bit_matches = _countBitMatches(dest, subnet.ip, subnet.mask);
+	// printf("%d ", bit_matches);
+	
+        if (bit_matches == subnet.mask && largest_matched_subnet_mask < subnet.mask) {
+	    largest_matched_subnet_mask = subnet.mask;
+	    route_index = i;
+	}
+    }
+
+    return routes.interfaces[route_index]; 
+}
