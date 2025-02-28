@@ -118,22 +118,22 @@ else ifeq ($(SUBMODE), run)
 > @echo "Running build/$(NAME)/$(NAME).o..."
 > @./build/$(NAME)/$(NAME).o
 
-else ifeq ($(SUBMODE), example)
+else ifeq ($(SUBMODE), input)
 ifeq ($(NUMBER), -1)
-> @echo "Running build/$(NAME)/$(NAME).o with $(NAME)/data/exampleInput.txt..."
-> @cat $(NAME)/data/exampleInput.txt | ./build/$(NAME)/$(NAME).o 
+> @echo "Running build/$(NAME)/$(NAME).o with $(NAME)/data/input.txt..."
+> @cat $(NAME)/data/input.txt | ./build/$(NAME)/$(NAME).o 
 else
-> @echo "Running build/$(NAME)/$(NAME).o with $(NAME)/data/exampleInput$(NUMBER).txt..."
-> @cat $(NAME)/data/exampleInput$(NUMBER).txt | ./build/$(NAME)/$(NAME).o
+> @echo "Running build/$(NAME)/$(NAME).o with $(NAME)/data/input$(NUMBER).txt..."
+> @cat $(NAME)/data/input$(NUMBER).txt | ./build/$(NAME)/$(NAME).o
 endif
 
 else ifeq ($(SUBMODE), valgrind)
 ifeq ($(NUMBER), -1)
-> @echo "Debugging build/$(NAME)/$(NAME).o with $(NAME)/data/exampleInput.txt..."
-> @cat $(NAME)/data/exampleInput.txt | valgrind ./build/$(NAME)/$(NAME).o 
+> @echo "Debugging build/$(NAME)/$(NAME).o with $(NAME)/data/input.txt..."
+> @cat $(NAME)/data/input.txt | valgrind ./build/$(NAME)/$(NAME).o 
 else
-> @echo "Debugging build/$(NAME)/$(NAME).o with $(NAME)/data/exampleInput$(NUMBER).txt..."
-> @cat $(NAME)/data/exampleInput$(NUMBER).txt | valgrind ./build/$(NAME)/$(NAME).o
+> @echo "Debugging build/$(NAME)/$(NAME).o with $(NAME)/data/input$(NUMBER).txt..."
+> @cat $(NAME)/data/input$(NUMBER).txt | valgrind ./build/$(NAME)/$(NAME).o
 endif
 
 else ifeq ($(SUBMODE), debug-build)
