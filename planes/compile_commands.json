@@ -1,0 +1,74 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-g",
+      "-O2",
+      "-std=c99",
+      "-pedantic",
+      "-Wall",
+      "-Wno-unused-result",
+      "-o",
+      "build/planes/planes.o",
+      "planes/src/LibList.c"
+    ],
+    "directory": "/home/horki/projects/labs",
+    "file": "/home/horki/projects/labs/planes/src/LibList.c",
+    "output": "/home/horki/projects/labs/build/planes/planes.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-g",
+      "-O2",
+      "-std=c99",
+      "-pedantic",
+      "-Wall",
+      "-Wno-unused-result",
+      "-o",
+      "build/planes/planes.o",
+      "planes/src/LibQueue.c"
+    ],
+    "directory": "/home/horki/projects/labs",
+    "file": "/home/horki/projects/labs/planes/src/LibQueue.c",
+    "output": "/home/horki/projects/labs/build/planes/planes.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-g",
+      "-O2",
+      "-std=c99",
+      "-pedantic",
+      "-Wall",
+      "-Wno-unused-result",
+      "-o",
+      "build/planes/planes.o",
+      "planes/src/LibStack.c"
+    ],
+    "directory": "/home/horki/projects/labs",
+    "file": "/home/horki/projects/labs/planes/src/LibStack.c",
+    "output": "/home/horki/projects/labs/build/planes/planes.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-g",
+      "-O2",
+      "-std=c99",
+      "-pedantic",
+      "-Wall",
+      "-Wno-unused-result",
+      "-o",
+      "build/planes/planes.o",
+      "planes/src/planes.c"
+    ],
+    "directory": "/home/horki/projects/labs",
+    "file": "/home/horki/projects/labs/planes/src/planes.c",
+    "output": "/home/horki/projects/labs/build/planes/planes.o"
+  }
+]

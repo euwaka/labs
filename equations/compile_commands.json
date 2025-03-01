@@ -1,0 +1,56 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-g",
+      "-O2",
+      "-std=c99",
+      "-pedantic",
+      "-Wall",
+      "-Wno-unused-result",
+      "-o",
+      "build/equations/equations.o",
+      "equations/src/main.c"
+    ],
+    "directory": "/home/horki/projects/labs",
+    "file": "/home/horki/projects/labs/equations/src/main.c",
+    "output": "/home/horki/projects/labs/build/equations/equations.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-g",
+      "-O2",
+      "-std=c99",
+      "-pedantic",
+      "-Wall",
+      "-Wno-unused-result",
+      "-o",
+      "build/equations/equations.o",
+      "equations/src/scanner.c"
+    ],
+    "directory": "/home/horki/projects/labs",
+    "file": "/home/horki/projects/labs/equations/src/scanner.c",
+    "output": "/home/horki/projects/labs/build/equations/equations.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-g",
+      "-O2",
+      "-std=c99",
+      "-pedantic",
+      "-Wall",
+      "-Wno-unused-result",
+      "-o",
+      "build/equations/equations.o",
+      "equations/src/solver.c"
+    ],
+    "directory": "/home/horki/projects/labs",
+    "file": "/home/horki/projects/labs/equations/src/solver.c",
+    "output": "/home/horki/projects/labs/build/equations/equations.o"
+  }
+]
