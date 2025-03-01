@@ -100,11 +100,11 @@ endif
 
 scripts:
 ifeq ($(NUMBER), -1)
-> @echo "Running Python script(s) for $(NAME)..."
-> @$(PY) $(NAME)/scripts/main.py
+> @echo "Running Python script $(SUBMODE).py for $(NAME)..."
+> @$(PY) $(NAME)/scripts/$(SUBMODE).py
 else
-> @echo "Running Python script(s) for $(NAME) and week $(NUMBER)..."
-> @$(PY) $(NAME)/W$(NUMBER)/scripts/main.py
+> @echo "Running Python script $(SUBMODE) for $(NAME) and week $(NUMBER)..."
+> @$(PY) $(NAME)/W$(NUMBER)/scripts/$(SUBMODE).py
 endif
 
 c:
