@@ -1,5 +1,5 @@
 /*
- * authors: Artur Topal (s5942128) + Lucas Chudy (s5732816)
+ * authors: Artur Topal (s5942128) + Lukas Chudy (s5732816)
  * date: 27/02/2025
  *
  * This header contains the structures and functions for handling the routing of IPv4
