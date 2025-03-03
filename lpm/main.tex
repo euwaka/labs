@@ -1,0 +1,160 @@
+\documentclass{lpm/adsrprt}
+
+% change this: (do NOT add your name, only your s-number!)
+\newcommand\snumA{s5732816}        % student number 1
+\newcommand\snumB{s5942128}        % student number 2
+\newcommand\assgnnum{3}            % assignment number
+\newcommand\assgntitle{Longest prefix match}  % assignment title
+
+% do not change this:
+\title{Assignment \assgnnum: ``\assgntitle''\\Programming report}
+\subtitle{\snumA\ and \snumB\\Algorithms and Data Structures in C (2024-2025)}
+\headertitle{Assignment \assgnnum: ``\assgntitle''}
+\headersubtitle{Report by \snumA\ and \snumB}
+
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% NOTE: You MUST read and follow Appendix E of the lecture notes! %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Problem description}
+
+The internet is a massive network of connected networks, and when one of the users sends a request, it is broken down into the so called "internet packets". These packets contain the information sent in the request, as well as the source and destination IP addresses. To ensure that these packets reach their planned destination, they must pass through multiple intermediate networks. The process of determining the next network to send a packet to is called routing, and it relies on routing tables that store redirection rules. In this assignment, we will be working with simplified routing tables that contain two values per row: the destination IP address with the subnet mask and the interface through which the packet must travel to reach its final destination.
+
+The problem we are trying to solve is how to efficiently route internet packets to their end destinations.
+
+
+\section{Problem analysis}
+
+We solve this problem with the Longest Prefix Match algorithm (LPM), which is a fundamental technique in routing that enables routers to select the most specific route for the given packet. In total, we use two approaches to implement the LPM algorithm. In the first approach, we are restricted to only use arrays, and no other data structures, as we soon realize, this approach is easier to implement but the solution becomes very inefficient for large routing tables and a larger number of requests. In the second approach, we improve the program by using the search tries, where we see that it is more effective.
+
+
+The core problem is to efficiently find the most specific matching subnet for a given IP address from a routing table. This means that when a packet with the destination IP arrives, the router must determine which entry in its routing table has the longest matching network prefix with the destination IP and then forward the packet to the corresponding interface.
+
+\textbf{We can abstract this problem as a binary pattern matching task where:}
+
+\begin{itemize}
+    \item \> Each IP address is a 32-bit integer (for IPv4), written as $4$ octets joined by a dot.
+    \item \> Each subnet consists of the IP address (network part and the hosts part), and the subnet mask with length $k$. The network part is the first $k$ bits of the subnet IP address (thus, $k \in \left[0,32 \right]$).
+    \item \> Our task is to find the subnet whose prefix shares the longest common sequence of initial bits with the target (destination) IP.
+\end{itemize}
+
+\subsection{Naive approach}
+The simplest solution is to check every entry in the routing table. In this approach, the routing table is stored in a dynamic array. When a query is made, the algorithm goes through the entire array to find the longest matching subnet. For each queried IP address, it checks all $n$ routing entries.
+
+\textbf{This is achieved by:}
+
+\begin{itemize}
+    \item \> Counting the number of matched bits (until the subnet mask) for each subnet IP address and the destination IP address.
+    \item \> Keeping track of the subnet with the longest match.
+    \item \> Returning the interface corresponding to the subnet with the longest prefix bit match.
+\end{itemize}
+
+\textbf{Time complexity:}
+At worst, the largest possible subnet mask has length $k$. Let there be $n$ entries in a routing table. Therefore, the loop through $n$ entries where each iteration performs $k$-bit comparison takes $O(kn)$ time. As we can all imagine, this time complexity gets big very quickly with larger $n$'s. This is why the second solution with the search tries is more effective.
+
+% As we know from the lecture of week 4 the time complexity for this linear search of a pattern is O(k*n) for the naive approach, where k is the length of the pattern we seek (in this case the IP address).
+
+\textbf{Memory:} The dynamic array representation stores all the subnets, and each entry takes up a constant memory $O(1)$. For $n$ entries, the dynamic array approach reaches at least $O(n)$ memory usage.
+ 
+
+\subsection{Improved version with tries}
+% After the solution with array
+Now, we turn to trees with a higher branching degree, specifically: "standard search tries". They are used to represent sequential data (such words, texts, and, in our case, subnets) in such a way that facilitates remarkably fast searching.
+
+\textbf{Important features of the implemented tries:}
+
+\begin{itemize}
+    \item \> Each bit of the subnet IP address (network part only) maps to a path of the trie: $0$ - left branch, $1$ - right branch.
+    \item \> Each branch of the trie corresponds to the unique subnet network.
+    \item \> Each leaf contains the interface and (optionally) the entire subnet structure of the corresponding network.
+    \item \> Root of the trie represents the start. Therefore, the first bit of the network starts from the second-level nodes.
+    \item \> Each bit of the destination IP determines the path taken up the trie. Since the destination IP is guaranteed\footnote{For practical purposes, the default subnet can also be added to the root while being stored as the left-most branch of the trie.} to reach some leaf, the corresponding interface is returned.
+\end{itemize}
+
+\textbf{Time complexity:}
+Since each branch corresponds with the subnet network-part IP, the maximum height of the trie is $max(k)$, where $k$ is the subnet mask. The trie traversal therefore takes at works $O(max(k)) = O(k)$ time. Building the search trie from $n$ entries requires the traversal of each of $k$ bits of $n$ entries, leading to time $O(kn)$. 
+
+\textbf{Memory}: 
+At worst, the trie has the same number of nodes as there are bits of network IP part which is, in total, $O(kn)$; plus $n$ leafs. Each node takes constant memory, therefore the memory usage is $O((k+1)n) = O(kn)$.
+
+Overall, this allows us to solve LPM in time $O(k)$, which is much faster\footnote{For large $n$, the array approach is of degree $O(n)$ whereas the trie approach is about $O(1)$, because $n >> k$. } than the array-based solution. However, it has larger memory requirements and is harder to implement compared to the array-based algorithm.
+
+\section{Program design}
+
+\subsection{Handling IP Addresses}
+
+Both implementations convert IP addresses and subnets from string format on each query to unsigned 32-bit integers \textbf{or} a static array of $4$ octets to allow for bitwise operations and more efficient storage. This conversion is handled by the \textbf{r\_convertStringIPv4} which converts the string "a.b.c.d" into a static array of four unsigned 8-bit integers. The conversion of IP addresses from the static array into unsigned 32-bit integers are done by \textbf{r\_packIP} and \textbf{r\_unpackIP}.
+
+\subsection{Subnet mask representation}
+For the subnet mask representation, we have used the \textbf{subnet\_t} structure that contains the subnet mask and the subnet IP address. The structure is parsed from string by \textbf{r\_convertStringSubnet}.
+
+\subsection{Look-up Algorithm}
+The look-ups differ substantially as they are the core of different approaches.
+The specific functions handle for it:
+\begin{itemize}
+    \item \> The \textbf{r\_routeIP } performs the linear search through the dynamic array, while  the static function \textbf{\_countBitMatches} returns the number of bit matches.
+    \item \> The \textbf{r\_findInterface } function goes deeper into the trie by going through the destination IP bits until it finds a leaf. 
+\end{itemize} 
+
+\subsection{Memory management}
+\begin{itemize}
+    \item \> In the linear search approach, we have used \textbf{r\_newRoutingTable}, \textbf{r\_addRoute}, \textbf{r\_freeRoutes} to handle memory and construct the data structures.
+    \item \> In the trie implementation, we have used recursive trie cleanup and the following functions: \textbf{r\_newRoutingTable}, \textbf{r\_newBranchNode}, \textbf{r\_newLeafNode}, \textbf{r\_freeRoutes}.
+\end{itemize} 
+
+\subsection{Error handling}
+All of the function mentioned simplified error handling because the input format is guaranteed to be correct and self-contained. However, for more practical reasons, proper error propagation is important.
+
+\section{Evaluation of the program}
+
+The program has managed to pass all the tests on Themis and is able to handle larger amounts of inputs without any memory leaks. Its built-in debugging function and detailed documentation will hopefully make it easier for the grader or anyone else looking into the code to understand.
+
+\section{Extension of the program}
+
+The routing table interface (including input management, LPM algorithm, memory management, and debugging) has been abstracted and scaled enough in separate header and source, so they can be easily used as a dependency or be updated.
+
+\section{Process description}
+
+The fact that we did not know each other before and that we both have this as an extracurricular course made some things difficult (especially considering we only had a week and it was also the midterm week at FEB/FSE), but overall we have managed quite well. The main thing we will have to focus on for the next assignment is a more optimal division of work and ideally an offline meetup in order to make this a better experience for both of us.
+
+\section{Conclusions}
+
+All in all, our solution passes all tests, obeys all the restrictions given in the assignment description and has no memory leaks. It solves the problem efficiently and is the most optimal solution we have come up with under the time restriction.
+
+\section{Appendix: program text}
+
+% Here you should include the program text.
+% Do NOT use screenshots or similar methods.
+% Below you can see how to use \lstinputlisting{}.
+\texttt{\bfseries router.h}
+\lstinputlisting{lpm/src/router_naive.h.deprecated}
+
+\texttt{\bfseries main.c}
+\lstinputlisting{lpm/src/main.c.deprecated}
+
+\texttt{\bfseries router.c}
+\lstinputlisting{lpm/src/router_naive.c.deprecated}
+
+\texttt{\bfseries router2.h}
+\lstinputlisting{lpm/src/router.h}
+
+\texttt{\bfseries main2.c}
+\lstinputlisting{lpm/src/main.c}
+
+\texttt{\bfseries router2.c}
+\lstinputlisting{lpm/src/router.c}
+
+
+% \section{Appendix: test cases} % Optional
+%
+% ...
+
+% \section{Appendix: Extensions} % Optional
+%
+% ...
+
+\end{document}
