@@ -26,9 +26,9 @@ print(data)
 # -------------------------------------------------------
 # Define the Model and Fit the Data
 # -------------------------------------------------------
-def capacitance(q, k, b):
-    """ Linear model for capacitor voltage: V = kq + b """
-    return q * k + b
+def capacitance(q, k):
+    """ Linear model for capacitor voltage: V = kq """
+    return q * k
 
 # Fit the model for the group with separations 2mm and 4mm
 def fit_model(data):
@@ -73,7 +73,7 @@ def plot_bestfit(data, popt, color, sep):
         capacitance(x, *popt),
         color=f"tab:{color}",
         linestyle="-",
-        label=rf"Fit ($s = {sep} (mm)$: $V(n) = ({popt[0]:.2f})n + ({popt[1]:.2f})$)"
+        label=rf"Fit ($s = {sep} (mm)$: $V(q) = {popt[0]:.1f}q$)"
     )
 
 plot_error_bars(data2, "2", "blue")
@@ -81,9 +81,9 @@ plot_error_bars(data4, "4", "orange")
 plot_bestfit(data2, popt2, "blue", "2")
 plot_bestfit(data4, popt4, "orange", "4")
 
-ax.set_xlabel(r"Number of charges applied, $n$", fontsize=14)
+ax.set_xlabel(r"Number of charges applied, $n = q$", fontsize=14)
 ax.set_ylabel(r"Capacitor voltage, $V_C$ (V)", fontsize=14)
-ax.set_title(r"Capacitor voltage vs. Number of charges applied ($V_c(n) = kn + b$)", fontsize=16)
+ax.set_title(r"Capacitor voltage vs. Number of charges applied ($V_c(q) = Cq$)", fontsize=16)
 
 ax.tick_params(axis="both", which="major", labelsize=12)
 ax.legend(fontsize=12)
