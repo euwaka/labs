@@ -1,38 +1,48 @@
-\documentclass[a4paper,9pt]{article}
+\documentclass[a4paper, 10pt]{extarticle}
 
-\usepackage{subcaption}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{subcaption} 
+\usepackage[font={small},labelfont={bf}]{caption}
 \usepackage{lipsum}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{graphicx}
-\usepackage{float}
 \usepackage[top=0.5in]{geometry}
+\usepackage{float}
 \usepackage[backend=biber]{biblatex}
 
+\addbibresource{capacitors/references.bib}
 \setlength{\parindent}{0pt}
 
-\title{Capacitors}
-\author{Artur Topal (s5942128)}
-\date{\today}
- 
+\title{\textbf{The Capacitors Lab Report}}
+\author{Maartje Metz (S5694418) and Artur Topal (S5942128) }
+\date{Groningen, \today}
+
 \begin{document}
 
-% title page
+\begin{figure}
+    \includegraphics[width=1\linewidth]{capacitors/img/RUG.png}
+    \label{fig:enter-label}
+    \end{figure}
 \maketitle
+% \thispagestyle{empty}
+    
+\begin{abstract}
+    \textit{\input{capacitors/sections/abstract}}
+\end{abstract}
 
-\textit{\input{capacitors/sections/abstract.tex}}
-
-\pagebreak
 \tableofcontents
-\pagebreak
+\vspace{1cm}
 
-\input{capacitors/sections/introduction.tex}
-\input{capacitors/sections/theory.tex}
-\input{capacitors/sections/methods.tex}
-\input{capacitors/sections/results.tex}
-\input{capacitors/sections/discussion.tex}
-\input{capacitors/sections/conclusions.tex}
+\input{capacitors/sections/introduction}
+\input{capacitors/sections/theory}
+\input{capacitors/sections/methods}
+\input{capacitors/sections/results}
+\input{capacitors/sections/discussion}
+\input{capacitors/sections/conclusion}
 \appendix
-\input{capacitors/sections/prep_answers.tex}
+\input{capacitors/sections/appendix/data}
+\input{capacitors/sections/appendix/prep_answers}
 
+
+\printbibliography
 \end{document}
