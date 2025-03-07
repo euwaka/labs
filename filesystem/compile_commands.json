@@ -1,0 +1,20 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-g",
+      "-O2",
+      "-std=c99",
+      "-pedantic",
+      "-Wall",
+      "-Wno-unused-result",
+      "-o",
+      "build/filesystem/filesystem.o",
+      "filesystem/src/main.c"
+    ],
+    "directory": "/home/horki/projects/labs",
+    "file": "/home/horki/projects/labs/filesystem/src/main.c",
+    "output": "/home/horki/projects/labs/build/filesystem/filesystem.o"
+  }
+]
