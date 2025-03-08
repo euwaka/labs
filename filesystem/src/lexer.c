@@ -41,14 +41,14 @@ static Token _create_empty_token() {
     return token;
 }
 
-bool lexer_match_word(const char *input, int *idx, IndexedData *output) {
+bool lexer_match_word(const char *input, int *idx, Slice *output) {
     int _idx = *idx;
     while (isalpha(input[_idx++]));
 
     if (isspace(input[_idx])) {
         // a word
-        output->from = *idx;
-        output->to   = _idx;
+        output->size = _idx - *idx;
+        output->data = input + *idx;
         *idx = _idx;
         return true;
     }
@@ -57,45 +57,45 @@ bool lexer_match_word(const char *input, int *idx, IndexedData *output) {
     return false;
 }
 
-void lexer_match_ascii(const char *input, int *idx, IndexedData *output) {
+void lexer_match_ascii(const char *input, int *idx, Slice *output) {
     int _idx = *idx;
 
     // TODO: "data hahaha\" " case is not correct
     while(input[_idx] != '"' && input[_idx] != '\0')
         _idx++;
 
-    output->from = *idx;
-    output->to   = _idx;
+    output->size = _idx - *idx;
+    output->data = input + *idx;
     *idx = _idx;
 }
 
-bool lexer_match_optr(const char *input, int *idx, Optr *output) {
+bool lexer_match_symbol(const char *input, int *idx, Symbol *output) {
     switch(input[*idx]) {
     case '"':
         *idx += 1;
-        *output = OPTR_QUOTATION;
+        *output = SYMBOL_QUOTATION;
         return true;
     case '/':
         *idx += 1;
-        *output = OPTR_SLASH;
+        *output = SYMBOL_SLASH;
         return true;
     case '>':
         *idx += 1;
 
         if (input[*idx] == '>') {
-            *output = OPTR_REDIR_DOUBLE;
+            *output = SYMBOL_REDIR_DOUBLE;
             *idx += 1;
         }
         else
-            *output = OPTR_REDIR_SINGLE;
+            *output = SYMBOL_REDIR_SINGLE;
         return true;
     case '.':
         *idx += 1;
-        *output = OPTR_DOT;
+        *output = SYMBOL_DOT;
         return true;
     case '-':
         *idx += 1;
-        *output = OPTR_DASH_SINGLE;
+        *output = SYMBOL_DASH_SINGLE;
         return true;
     default:
         return false;
@@ -113,24 +113,24 @@ Token lexer_create_token(const char *input, int *idx) {
         return token;
     }
 
-    Optr optr;
-    if (lexer_match_optr(input, idx, &optr)) {
-        token->type = TOKEN_OPERATOR;
-        token->data.optr = optr;
+    Symbol symbol;
+    if (lexer_match_symbol(input, idx, &symbol)) {
+        token->type = TOKEN_SYMBOL;
+        token->data.symbol = symbol;
         return token;
     }
 
-    IndexedData data;
-    if (lexer_match_word(input, idx, &data)) {
-        token->type = TOKEN_LATIN;
-        token->data.indexed_data = data; 
+    Slice slice;
+    if (lexer_match_word(input, idx, &slice)) {
+        token->type = TOKEN_WORD;
+        token->data.slice = slice; 
         return token;
     }
 
     // otherwise, the token is some ASCII text
-    lexer_match_ascii(input, idx, &data);
+    lexer_match_ascii(input, idx, &slice);
     token->type = TOKEN_ASCII;
-    token->data.indexed_data = data;
+    token->data.slice = slice;
     return token;
 }
 
@@ -166,24 +166,24 @@ void lexer_free_tokens(Token token) {
     free(token);
 }
 
-static void _repr_token_string(IndexedData data, const char *input) {
-    printf("%.*s", (int)(data.to - data.from), input + data.from);
+static void _repr_token_string(Slice data, const char *input) {
+    printf("%.*s", (int)data.size, data.data);
 }
 
-static void _repr_token_optr(Optr optr) {
-    printf("%s", OPTR_STRS[optr]);
+static void _repr_token_symbol(Symbol symbol) {
+    printf("%s", SYMBOL_STRS[symbol]);
 }
 
 void lexer_repr_tokens(Token token, const char *input) {
     while (token != NULL) {
         switch (token->type) {
-        case TOKEN_LATIN:
+        case TOKEN_WORD:
         case TOKEN_ASCII:
-            _repr_token_string(token->data.indexed_data, input);
+            _repr_token_string(token->data.slice, input);
             printf(" ");
             break;
-        case TOKEN_OPERATOR:
-            _repr_token_optr(token->data.optr);
+        case TOKEN_SYMBOL:
+            _repr_token_symbol(token->data.symbol);
             printf(" ");
             break;
         case TOKEN_EOF:

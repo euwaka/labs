@@ -7,32 +7,32 @@
 #define LEXER_MAXINPUT 1000 // not absolute
 #define LEXER_MAX_IDENTIFIER_LENGTH 60 // absolute
 
-typedef enum Optr {
-    OPTR_QUOTATION = 0,
-    OPTR_SLASH,
-    OPTR_REDIR_SINGLE,
-    OPTR_REDIR_DOUBLE,
-    OPTR_DOT,
-    OPTR_DASH_SINGLE
-} Optr;
+typedef enum Symbol {
+    SYMBOL_QUOTATION = 0,
+    SYMBOL_SLASH,
+    SYMBOL_REDIR_SINGLE,
+    SYMBOL_REDIR_DOUBLE,
+    SYMBOL_DOT,
+    SYMBOL_DASH_SINGLE
+} Symbol;
 
-static char const *const OPTR_STRS[] = {"\"", "/", ">", ">>", ".", "-"};
+static char const *const SYMBOL_STRS[] = {"\"", "/", ">", ">>", ".", "-"};
 
 typedef enum {
-    TOKEN_LATIN,  
-    TOKEN_OPERATOR, // for example, |, >, or >>
+    TOKEN_WORD,  
+    TOKEN_SYMBOL, // for example, |, >, or >>
     TOKEN_ASCII,
     TOKEN_EOF
 } TokenType;
 
-typedef struct IndexedData {
-    size_t from;
-    size_t to;
-} IndexedData;
+typedef struct Slice {
+    size_t size;
+    const char *data;
+} Slice;
 
 typedef union TokenData {
-    IndexedData indexed_data;
-    Optr optr;
+    Slice slice;
+    Symbol symbol;
 } TokenData;
     
 typedef struct TokenNode *Token;
@@ -46,9 +46,9 @@ typedef struct TokenNode {
  * Functions for matching specific components from the string input, and propagating the pointer of the current
  * character in the string input.
  */
-bool lexer_match_word(const char *input, int *idx, IndexedData *output);
-void lexer_match_ascii(const char *input, int *idx, IndexedData *output);
-bool lexer_match_optr(const char *input, int *idx, Optr *output);
+bool lexer_match_word(const char *input, int *idx, Slice *output);
+void lexer_match_ascii(const char *input, int *idx, Slice *output);
+bool lexer_match_SYMBOL(const char *input, int *idx, Symbol *output);
 
 
 /*
